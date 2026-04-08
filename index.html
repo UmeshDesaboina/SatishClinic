@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Satyavathi Caterings | Royal Culinary Legacy</title>
-  <!-- Google Fonts + Font Awesome + Swiper JS -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Dr. Satish Clinic | Advanced Medicine & Aesthetics</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- AOS Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     * {
       margin: 0;
@@ -18,474 +17,534 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #0a0806;
-      color: #f5efe7;
+      font-family: 'Inter', sans-serif;
+      background: #FDFCF8;
+      color: #1A2C2E;
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
 
     :root {
-      --gold-primary: #d4af37;
-      --gold-light: #f3e5ab;
-      --gold-dark: #b8901d;
-      --dark-bg: #0a0806;
-      --charcoal: #1a1612;
-      --cream: #fef8ed;
-      --ruby: #9e2a2a;
-      --emerald: #2d6a4f;
-      --shadow-gold: 0 25px 45px -12px rgba(212, 175, 55, 0.35);
-      --glow-gold: 0 0 20px rgba(212, 175, 55, 0.3);
+      --primary-deep: #0A2F32;
+      --primary-slate: #1C4B4F;
+      --accent-gold: #CBA258;
+      --accent-gold-light: #F5E6D3;
+      --bg-warm: #FEFAF5;
+      --bg-card: #FFFFFF;
+      --text-dark: #1A2C2E;
+      --text-soft: #4A5B5E;
+      --border-soft: #E9E2D4;
+      --shadow-premium: 0 30px 50px -20px rgba(0, 0, 0, 0.12), 0 10px 20px -8px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 40px 60px -25px rgba(10, 47, 50, 0.2);
+      --transition-smooth: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1.05);
     }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #1e1b16; }
-    ::-webkit-scrollbar-thumb { background: var(--gold-primary); border-radius: 10px; }
+    @keyframes shimmerMove {
+      0% { background-position: -150% 0; }
+      100% { background-position: 150% 0; }
+    }
 
-    /* Navigation */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(203, 162, 88, 0.2);
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary-deep);
+    }
+
+    .section-subhead {
+      font-size: 1.2rem;
+      color: var(--text-soft);
+      max-width: 700px;
+      margin-bottom: 3.5rem;
+      border-left: 5px solid var(--accent-gold);
+      padding-left: 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primary-deep);
+      color: white;
+      padding: 14px 34px;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 8px 18px rgba(10, 47, 50, 0.2);
+    }
+
+    .btn i {
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--primary-slate);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 28px -10px rgba(10, 47, 50, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--primary-deep);
+      color: var(--primary-deep);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-deep);
+      color: white;
+    }
+
+    /* navbar */
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10, 8, 6, 0.96);
-      backdrop-filter: blur(15px);
+      background: rgba(253, 252, 248, 0.92);
+      backdrop-filter: blur(16px);
       z-index: 1000;
-      padding: 0.7rem 6%;
+      transition: 0.3s;
+      border-bottom: 1px solid rgba(203, 162, 88, 0.2);
+    }
+
+    .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 18px 36px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      cursor: pointer;
-    }
-    .logo-img {
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
+
+    .logo h3 {
+      font-size: 1.9rem;
       font-weight: 800;
-      color: #0a0806;
-      box-shadow: 0 0 20px rgba(212,175,55,0.5);
-      animation: pulseGlow 2s infinite;
-    }
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(212,175,55,0); }
-      100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
-    }
-    .logo-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #fff, var(--gold-light));
-      -webkit-background-clip: text;
+      background: linear-gradient(135deg, #0A2F32 0%, #1C4B4F 100%);
       background-clip: text;
+      -webkit-background-clip: text;
       color: transparent;
     }
-    .logo-text p {
-      font-size: 0.6rem;
-      letter-spacing: 3px;
-      color: var(--gold-primary);
+
+    .logo span {
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      font-weight: 500;
     }
+
     .nav-links {
       display: flex;
-      gap: 2.2rem;
+      gap: 2.8rem;
       align-items: center;
     }
+
     .nav-links a {
       text-decoration: none;
+      color: var(--text-dark);
       font-weight: 500;
-      color: #e0d6c6;
-      transition: 0.3s;
-      position: relative;
+      transition: 0.2s;
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gold-primary);
-      transition: width 0.3s;
-    }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold-primary); }
-    .download-menu-btn {
-      background: transparent;
-      border: 1.5px solid var(--gold-primary);
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      color: var(--gold-primary);
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .download-menu-btn:hover { background: var(--gold-primary); color: #0a0806; transform: scale(1.05); }
-    .menu-toggle { display: none; font-size: 1.8rem; color: var(--gold-primary); cursor: pointer; }
 
-    /* Hero Slider with Parallax */
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .mobile-menu {
+      display: none;
+      font-size: 1.9rem;
+      cursor: pointer;
+      color: var(--primary-deep);
+    }
+
+    /* hero */
     .hero {
-      min-height: 100vh;
+      padding-top: 160px;
+      padding-bottom: 80px;
+      background: radial-gradient(ellipse at 80% 30%, #FFF8EF, #FDFAF2);
       position: relative;
       overflow: hidden;
     }
-    .hero-slider {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
     }
-    .hero-slider .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      transform: scale(1.05);
-      animation: slowZoom 20s infinite alternate;
-    }
-    @keyframes slowZoom {
-      0% { transform: scale(1.05); }
-      100% { transform: scale(1.15); }
-    }
-    .hero-slider .slide.active { opacity: 1; }
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(0,0,0,0.6));
-      z-index: 1;
-    }
+
     .hero-content {
-      position: relative;
-      z-index: 2;
-      min-height: 100vh;
+      flex: 1.2;
+    }
+
+    .badge-premium {
+      background: var(--accent-gold-light);
+      color: #8B6B3D;
+      padding: 6px 20px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.8rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--primary-deep);
+    }
+
+    .highlight {
+      color: var(--accent-gold);
+      border-bottom: 3px dotted var(--accent-gold);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 40px;
+    }
+
+    .stat-item h4 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary-deep);
+    }
+
+    /* doctor card */
+    .doctor-card {
+      flex: 0.9;
+      background: white;
+      border-radius: 48px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-premium);
+      transition: var(--transition-smooth);
+      border: 1px solid rgba(203, 162, 88, 0.4);
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .doctor-img-placeholder {
+      width: 220px;
+      height: 220px;
+      background: linear-gradient(145deg, #E8E0D0, #D6CDBB);
+      border-radius: 50%;
+      margin: 0 auto 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 5rem;
-    }
-    .hero-inner { max-width: 950px; }
-    .hero-badge {
-      background: rgba(212, 175, 55, 0.15);
-      backdrop-filter: blur(8px);
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      color: var(--gold-light);
-      border: 1px solid rgba(212,175,55,0.5);
-      margin-bottom: 1.5rem;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #fff, var(--gold-light));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .hero-tagline {
-      font-size: 1.4rem;
-      font-style: italic;
-      color: var(--gold-light);
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      font-weight: 300;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-    .btn-group {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-      color: #0a0806;
-      border: none;
-      padding: 1rem 2.4rem;
-      font-weight: 700;
-      border-radius: 50px;
-      transition: 0.3s;
-      cursor: pointer;
-      position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
     }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
+
+    .doctor-img-placeholder img {
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
+      object-fit: cover;
+      border-radius: 50%;
     }
-    .btn-primary:hover::before { left: 100%; }
-    .btn-primary:hover { transform: translateY(-4px); box-shadow: var(--shadow-gold); }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--gold-primary);
-      color: white;
-      padding: 0.95rem 2.2rem;
-      border-radius: 50px;
+
+    .doctor-card h3 {
+      font-size: 1.7rem;
+      margin-top: 12px;
+    }
+
+    .doctor-title {
+      color: var(--accent-gold);
       font-weight: 600;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    .btn-outline:hover { background: var(--gold-primary); color: black; transform: translateY(-4px); }
-
-    /* Stats with Counters */
-    .stats {
-      background: linear-gradient(135deg, #12100c, #1a1612);
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      text-align: center;
-      gap: 2rem;
-      padding: 4rem 6%;
-      border-top: 1px solid rgba(212,175,55,0.2);
-      border-bottom: 1px solid rgba(212,175,55,0.2);
-    }
-    .stat-item h2 { font-size: 3rem; color: var(--gold-primary); font-weight: 800; }
-    .stat-item p { letter-spacing: 1px; }
-
-    /* Sections */
-    section { padding: 6rem 6%; }
-    .section-title {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      color: var(--cream);
-      position: relative;
-      display: inline-block;
-      width: 100%;
-    }
-    .section-title span { color: var(--gold-primary); }
-    .gold-accent {
-      width: 90px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-      margin: 0.5rem auto 2rem;
     }
 
-    /* Menu Tabs */
-    .menu-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
+    /* services */
+    .services {
+      background: #FFFFFF;
     }
-    .tab-btn {
-      background: #1e1914;
-      border: 1px solid rgba(212,175,55,0.3);
-      padding: 0.7rem 1.8rem;
-      border-radius: 50px;
-      font-weight: 500;
-      color: #dcd0bd;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    .tab-btn.active, .tab-btn:hover { background: var(--gold-primary); color: #0a0806; transform: translateY(-2px); }
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .menu-card {
-      background: rgba(26, 22, 18, 0.7);
-      backdrop-filter: blur(5px);
-      border-radius: 28px;
-      padding: 1.8rem;
-      transition: all 0.4s ease;
-      border: 1px solid rgba(212,175,55,0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    .menu-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(212,175,55,0.1), transparent);
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .menu-card:hover::before { opacity: 1; }
-    .menu-card:hover { transform: translateY(-10px); border-color: var(--gold-primary); box-shadow: var(--shadow-gold); }
-    .menu-icon { font-size: 2.5rem; color: var(--gold-primary); margin-bottom: 1rem; }
 
-    /* Chef's Table Experience - NEW FEATURE */
-    .chef-experience {
-      background: linear-gradient(135deg, #1a1612, #0e0b08);
-      border-radius: 48px;
-      padding: 3rem;
-      margin-top: 2rem;
-      border: 1px solid rgba(212,175,55,0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    .chef-experience::after {
-      content: '👨‍🍳';
-      position: absolute;
-      bottom: 20px;
-      right: 30px;
-      font-size: 100px;
-      opacity: 0.05;
-      pointer-events: none;
-    }
-    .experience-grid {
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
     }
-    .exp-card {
-      background: rgba(0,0,0,0.4);
-      border-radius: 28px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.4s;
-      cursor: pointer;
-    }
-    .exp-card:hover { transform: translateY(-8px); background: rgba(212,175,55,0.1); }
-    .exp-card i { font-size: 3rem; color: var(--gold-primary); margin-bottom: 1rem; }
-    .exp-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-    .exp-card p { color: #b9aa92; font-size: 0.9rem; }
 
-    /* Live Chef Counter Animation */
-    .live-chef {
+    .service-card {
+      background: var(--bg-card);
+      border-radius: 36px;
+      padding: 2rem;
+      transition: var(--transition-smooth);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.04);
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--accent-gold);
+      box-shadow: var(--shadow-premium);
+    }
+
+    .service-icon {
+      background: var(--primary-deep);
+      width: 80px;
+      height: 80px;
+      border-radius: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-      padding: 1rem;
-      background: rgba(212,175,55,0.1);
-      border-radius: 60px;
-      animation: pulseBg 2s infinite;
-    }
-    @keyframes pulseBg {
-      0%, 100% { background: rgba(212,175,55,0.05); }
-      50% { background: rgba(212,175,55,0.15); }
-    }
-    .live-chef i { font-size: 2rem; color: var(--gold-primary); animation: spin 4s linear infinite; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-
-    /* Features Grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .feature-card {
-      background: rgba(26, 22, 18, 0.6);
-      border-radius: 28px;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid rgba(212,175,55,0.2);
+      margin-bottom: 1.8rem;
+      color: white;
+      font-size: 2.2rem;
       transition: 0.3s;
     }
-    .feature-card:hover { transform: translateY(-8px); border-color: var(--gold-primary); box-shadow: var(--shadow-gold); }
-    .feature-card i { font-size: 2.5rem; color: var(--gold-primary); margin-bottom: 1rem; }
 
-    /* Gallery */
-    .swiper { width: 100%; padding: 2rem 0; }
-    .swiper-slide { border-radius: 28px; overflow: hidden; }
-    .swiper-slide img { width: 100%; height: 320px; object-fit: cover; border-radius: 24px; transition: 0.5s; }
-    .swiper-slide:hover img { transform: scale(1.05); }
+    /* awards bar */
+    .awards-bar {
+      background: var(--bg-warm);
+      border-radius: 60px;
+      padding: 2rem;
+      margin: 3rem 0;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
 
-    /* Contact Form */
-    .contact-grid {
+    .award-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .award-item i {
+      font-size: 2rem;
+      color: var(--accent-gold);
+    }
+
+    /* about */
+    .about-flex {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 1.3;
+    }
+
+    .signature {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-top: 25px;
+      color: var(--accent-gold);
+      border-top: 2px solid #E9E2D4;
+      padding-top: 20px;
+    }
+
+    .experience-highlight {
+      background: var(--primary-deep);
+      border-radius: 32px;
+      padding: 2rem;
+      color: white;
+      flex: 0.9;
+    }
+
+    /* contact form - ENHANCED STYLING */
+    .contact-form {
+      background: white;
+      border-radius: 48px;
+      padding: 2rem;
+      box-shadow: var(--shadow-premium);
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(203, 162, 88, 0.2);
+    }
+    .contact-form:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 22px;
+      border: 1.5px solid #E9E2D4;
+      border-radius: 60px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      background: #FFFFFF;
+      transition: all 0.25s ease;
+      outline: none;
+      color: var(--text-dark);
+    }
+    .form-group textarea {
+      border-radius: 32px;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 4px rgba(203, 162, 88, 0.2);
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--primary-deep);
+      padding-left: 10px;
+    }
+    .contact-form button {
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    /* virtual badge */
+    .virtual-badge {
+      background: rgba(203, 162, 88, 0.15);
+      border-radius: 100px;
+      padding: 8px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* testimonials */
+    .testimonial-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .test-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem;
+      max-width: 350px;
+      transition: all 0.3s;
+      box-shadow: var(--shadow-premium);
+    }
+
+    /* contact & map */
+    .contact-wrap {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .map-preview {
+      background: #E2D9CE;
+      border-radius: 32px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      overflow: hidden;
+      border: 1px solid var(--accent-gold-light);
+    }
+    .map-preview iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .opening-hours {
+      background: var(--bg-warm);
+      border-radius: 32px;
+      padding: 1.4rem;
+      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 4rem;
-      background: rgba(20, 16, 12, 0.6);
-      border-radius: 48px;
-      padding: 3rem;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(212,175,55,0.2);
+      gap: 1rem;
+      justify-content: space-between;
     }
-    .contact-info, .contact-form { flex: 1; }
-    .contact-info i { color: var(--gold-primary); width: 2rem; }
-    .input-group { margin-bottom: 1.2rem; }
-    .input-group input, .input-group textarea, .input-group select {
-      width: 100%;
-      background: #1e1915;
-      border: 1px solid #3a3228;
-      padding: 1rem;
-      border-radius: 20px;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      transition: 0.3s;
+    .hours-item {
+      font-weight: 500;
     }
-    .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
-      border-color: var(--gold-primary);
-      outline: none;
-      box-shadow: 0 0 10px rgba(212,175,55,0.3);
-    }
-    .submit-btn {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-      border: none;
-      padding: 0.9rem 2rem;
-      font-weight: bold;
-      border-radius: 40px;
-      cursor: pointer;
-      width: 100%;
-      transition: 0.3s;
-    }
-    .submit-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold); }
-    .download-section {
+
+    footer {
+      background: #082426;
+      color: #C6D6D8;
+      padding: 40px 0;
       text-align: center;
-      background: linear-gradient(135deg, #12100c, #0e0b08);
-      border-radius: 48px;
-      margin: 0 6% 3rem 6%;
-      padding: 3rem;
     }
-    .footer {
-      background: #050403;
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid rgba(212,175,55,0.2);
+    .social-links a {
+      color: #C6D6D8;
+      margin: 0 12px;
+      font-size: 1.4rem;
+      transition: 0.2s;
+      display: inline-block;
     }
-    .whatsapp-float {
+    .social-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    @media (max-width: 950px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        flex-direction: column;
+        background: white;
+        width: 80%;
+        height: 100vh;
+        padding: 2rem;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.6rem;
+      }
+      h2 {
+        font-size: 2.2rem;
+      }
+      .container {
+        padding: 0 20px;
+      }
+    }
+
+    .floating-whatsapp {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
+      bottom: 28px;
+      right: 28px;
       background: #25D366;
       width: 58px;
       height: 58px;
@@ -494,349 +553,236 @@
       align-items: center;
       justify-content: center;
       font-size: 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       z-index: 99;
-      transition: 0.3s;
-      animation: bounce 2s infinite;
+      transition: 0.2s;
+      color: white;
     }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    .whatsapp-float:hover { transform: scale(1.1); }
-    @media (max-width: 850px) {
-      .nav-links { display: none; }
-      .menu-toggle { display: block; }
-      .nav-links.mobile-open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: #0a0806f2;
-        backdrop-filter: blur(20px);
-        padding: 2rem;
-        gap: 1.5rem;
-        text-align: center;
-      }
-      .hero h1 { font-size: 2.5rem; }
-      .hero-tagline { font-size: 1rem; }
-      .section-title { font-size: 2rem; }
+    .floating-whatsapp:hover {
+      transform: scale(1.08);
+      background: #20b85f;
     }
   </style>
 </head>
 <body>
 
 <div class="navbar" id="navbar">
-  <div class="logo-area">
-    <!-- <div class="logo-img"><i class="fas fa-crown"></i></div> -->
-     <div class="logo-img">
-    <img src="image.png" alt="Satyavathi Logo" style="width: 55px; height: 100px; ; object-fit: cover; margin-top: 10px;">
-</div>
-    <div class="logo-text">
-      <h1>SATYAVATHI</h1>
-      <p>CATERINGS • WE PLAN IN YOUR BUDGET</p>
+  <div class="nav-container">
+    <div class="logo">
+      <h3>Dr. Satish Clinic</h3>
+      <span>PREMIUM HEALTH & AESTHETICS</span>
     </div>
-  </div>
-  <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-  <div class="nav-links" id="navLinks">
-    <a href="#home" class="nav-link active">HOME</a>
-    <a href="#menu" class="nav-link">MENU</a>
-    <a href="#chefExperience" class="nav-link">CHEF'S TABLE</a>
-    <a href="#gallery" class="nav-link">GALLERY</a>
-    <a href="#contact" class="nav-link">CONTACT</a>
-    <button class="download-menu-btn" id="downloadPdfBtn"><i class="fas fa-download"></i> Menu PDF</button>
+    <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">Doctor</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
 </div>
 
-<!-- Hero Slider -->
+<!-- Hero Section -->
 <section id="home" class="hero">
-  <div class="hero-slider" id="heroSlider">
-    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2070');"></div>
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070');"></div>
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=2070');"></div>
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2070');"></div>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-inner" data-aos="fade-up">
-      <div class="hero-badge"><i class="fas fa-star-of-life"></i> EST. 2010 • PREMIUM CATERING</div>
-      <h1>SATYAVATHI</h1>
-      <div class="hero-tagline">"Where Every Bite Tells a Story of Royalty & Tradition"</div>
-      <p>Authentic South Indian & Indo-Asian flavors crafted with passion. We turn your celebrations into unforgettable feasts.</p>
-      <div class="btn-group">
-        <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">EXPLORE MENU</button>
-        <button class="btn-outline" id="heroDownloadBtn"><i class="fas fa-file-pdf"></i> Download Menu</button>
+  <div class="container hero-grid">
+    <div class="hero-content" data-aos="fade-up">
+      <div class="badge-premium"><i class="fas fa-certificate"></i> Top 1% Clinic Worldwide</div>
+      <h1>Redefining <span class="highlight">Healthcare</span> With Precision & Compassion</h1>
+      <p>Cutting-edge diagnostics, holistic wellness, and regenerative therapies — experience the future of medicine at Dr. Satish Clinic.</p>
+      <div class="virtual-badge"><i class="fas fa-video"></i> Virtual Consult Available | Global Patients</div>
+      <div class="hero-stats">
+        <div class="stat-item"><h4>15+ Years</h4><span>Global Excellence</span></div>
+        <div class="stat-item"><h4>10k+</h4><span>Smiling Patients</span></div>
+        <div class="stat-item"><h4>50+</h4><span>Advanced Tech</span></div>
       </div>
+      <a href="#contact" class="btn" style="margin-top: 20px;">Book VIP Slot <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <!-- Doctor Photo Card -->
+    <div class="doctor-card" data-aos="fade-left" data-aos-delay="100">
+      <div class="doctor-img-placeholder">
+        <img src="https://placehold.co/400x400/CFC6B8/FFFFFF?text=Dr.+Satish+Photo" alt="Dr. Satish Portrait">
+      </div>
+      <h3>Dr. Satish Mehta</h3>
+      <div class="doctor-title">MD, FACC | Director of Advanced Medicine</div>
+      <p style="margin-top: 10px;"><i class="fas fa-star" style="color:#CBA258;"></i> 30+ International Awards</p>
     </div>
   </div>
 </section>
 
-<!-- Stats with Counter Animation -->
-<div class="stats" data-aos="fade-up">
-  <div class="stat-item"><h2 class="counter" data-target="5000">0</h2><p>Happy Events</p></div>
-  <div class="stat-item"><h2 class="counter" data-target="250">0</h2><p>Signature Dishes</p></div>
-  <div class="stat-item"><h2 class="counter" data-target="100">0</h2><p>Budget Planning</p><p style="font-size:0.8rem;">% Satisfaction</p></div>
-  <div class="stat-item"><h2 class="counter" data-target="15">0</h2><p>Years of Legacy</p></div>
+<!-- Awards Bar -->
+<div class="container awards-bar" data-aos="zoom-in">
+  <div class="award-item"><i class="fas fa-trophy"></i> Best Multi-Specialty Clinic 2024</div>
+  <div class="award-item"><i class="fas fa-microscope"></i> Robotic Surgery Excellence</div>
+  <div class="award-item"><i class="fas fa-leaf"></i> Eco-Luxury Healthcare</div>
+  <div class="award-item"><i class="fas fa-hand-holding-heart"></i> Patient-Centric Design</div>
 </div>
 
-<!-- MENU Section -->
-<section id="menu">
-  <div class="section-title" data-aos="fade-up">Exquisite <span>Menu Selections</span></div>
-  <div class="gold-accent"></div>
-  <div class="section-subtitle" data-aos="fade-up">Crafted from generations-old recipes with the finest ingredients.</div>
-  <div class="menu-tabs" id="menuTabs"></div>
-  <div id="menuItemsContainer" class="menu-grid"></div>
-</section>
-
-<!-- CHEF'S TABLE EXPERIENCE - Premium New Feature -->
-<section id="chefExperience">
-  <div class="section-title" data-aos="fade-up"><span>👨‍🍳 Chef's Table</span> Experience</div>
-  <div class="gold-accent"></div>
-  <div class="chef-experience" data-aos="fade-up">
-    <div class="experience-grid">
-      <div class="exp-card">
-        <i class="fas fa-microphone-alt"></i>
-        <h3>Live Demo Counter</h3>
-        <p>Watch our master chefs prepare signature dishes live at your event</p>
-      </div>
-      <div class="exp-card">
-        <i class="fas fa-trophy"></i>
-        <h3>Award-Winning Recipes</h3>
-        <p>Decades of culinary excellence recognized nationally</p>
-      </div>
-      <div class="exp-card">
-        <i class="fas fa-wine-glass-alt"></i>
-        <h3>Plated Fine Dining</h3>
-        <p>Elegant plating and royal presentation for premium events</p>
-      </div>
-      <div class="exp-card">
-        <i class="fas fa-calendar-alt"></i>
-        <h3>Personalized Menu Curation</h3>
-        <p>Our chef designs a custom menu based on your taste and theme</p>
-      </div>
-    </div>
-    <div class="live-chef">
-      <i class="fas fa-utensil-spoon"></i>
-      <span><strong>🔥 Live Kitchen Counters Available</strong> — Interactive food stations for weddings & corporate galas</span>
-      <i class="fas fa-fire"></i>
+<!-- Services -->
+<section id="services" class="services">
+  <div class="container">
+    <h2 data-aos="fade-right">Precision Treatments</h2>
+    <div class="section-subhead" data-aos="fade-right" data-aos-delay="100">Integrative medicine, advanced aesthetics & personalized care plans.</div>
+    <div class="services-grid">
+      <div class="service-card" data-aos="flip-up"><div class="service-icon"><i class="fas fa-heartbeat"></i></div><h3>Cardio-Metabolic Clinic</h3><p>Advanced lipid, hypertension & reversal programs.</p></div>
+      <div class="service-card" data-aos="flip-up" data-aos-delay="50"><div class="service-icon"><i class="fas fa-dna"></i></div><h3>Regenerative Medicine</h3><p>PRP, stem cells & peptide therapies for longevity.</p></div>
+      <div class="service-card" data-aos="flip-up" data-aos-delay="100"><div class="service-icon"><i class="fas fa-spa"></i></div><h3>Aesthetic & Laser</h3><p>Morpheus8, Botox, fillers & skin tightening.</p></div>
+      <div class="service-card" data-aos="flip-up" data-aos-delay="150"><div class="service-icon"><i class="fas fa-brain"></i></div><h3>Neurology & Sleep</h3><p>Advanced migraine & sleep apnea solutions.</p></div>
     </div>
   </div>
 </section>
 
-<!-- Why Choose Us -->
-<section id="features">
-  <div class="section-title" data-aos="fade-up">Why <span>Choose Us</span></div>
-  <div class="gold-accent"></div>
-  <div class="features-grid" data-aos="fade-up">
-    <div class="feature-card"><i class="fas fa-hand-holding-heart"></i><h3>Budget Friendly</h3><p>We plan in your budget without compromising quality.</p></div>
-    <div class="feature-card"><i class="fas fa-chef-hat"></i><h3>Master Chefs</h3><p>Experienced chefs from authentic culinary backgrounds.</p></div>
-    <div class="feature-card"><i class="fas fa-truck"></i><h3>Pan India Service</h3><p>We cater across India with premium logistics.</p></div>
-    <div class="feature-card"><i class="fas fa-leaf"></i><h3>Hygiene First</h3><p>ISO standard kitchens & fresh ingredients.</p></div>
+<!-- About + Doctor -->
+<section id="about" class="about" style="background: #FEFAF5;">
+  <div class="container about-flex">
+    <div class="about-text" data-aos="fade-right">
+      <h2>Meet Dr. Satish <span style="color: #CBA258;">Mehta</span></h2>
+      <p style="margin: 20px 0; line-height:1.5">A visionary physician with dual fellowships in internal medicine and aesthetic medicine. Dr. Satish has been featured in "Top Doctors of Asia" and pioneers non-invasive techniques. He believes in empathy-driven excellence, combining advanced diagnostics with a holistic approach to restore vitality.</p>
+      <div class="virtual-badge" style="margin-bottom: 12px;"><i class="fas fa-language"></i> Fluent: English, Hindi, French</div>
+      <div class="signature"><i class="fas fa-quote-right"></i> Every patient is unique — we craft bespoke health journeys.</div>
+    </div>
+    <div class="experience-highlight" data-aos="fade-left">
+      <i class="fas fa-user-md" style="font-size: 2rem; color: var(--accent-gold);"></i>
+      <h3 style="color:white; margin: 15px 0;">Clinical Excellence</h3>
+      <p>✔ 15,000+ successful procedures</p>
+      <p>✔ Internationally trained (Harvard, Mayo Clinic)</p>
+      <p>✔ 98% patient satisfaction score</p>
+      <p>✔ Cutting-edge research integrations</p>
+    </div>
   </div>
 </section>
 
-<!-- Gallery -->
-<section id="gallery">
-  <div class="section-title" data-aos="fade-up">Visual <span>Story</span></div>
-  <div class="gold-accent"></div>
-  <div class="swiper mySwiper" data-aos="zoom-in">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800" alt="Catering"></div>
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800" alt="Biryani"></div>
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1574484284003-9d8ba8de18a3?w=800" alt="Sweets"></div>
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800" alt="Live Counter"></div>
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800" alt="Wedding"></div>
+<!-- Testimonials -->
+<section id="testimonials" class="testimonials" style="background: #FFFFFF;">
+  <div class="container">
+    <h2 data-aos="fade-up">Patient Love <span style="color: #CBA258;">& Trust</span></h2>
+    <div class="section-subhead" data-aos="fade-up">Real stories from our premium healthcare journeys.</div>
+    <div class="testimonial-grid">
+      <div class="test-card" data-aos="zoom-in"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Dr. Satish's attention to detail is unmatched. The clinic feels like a 5-star hotel and the medical expertise is world-class."</p><div class="patient-name">— Sneha Reddy</div></div>
+      <div class="test-card" data-aos="zoom-in" data-aos-delay="100"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Thanks to his regenerative treatments, I recovered faster than expected. Highly recommend the aesthetic team."</p><div class="patient-name">— Vikram Sethi</div></div>
+      <div class="test-card" data-aos="zoom-in" data-aos-delay="200"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"The virtual consultation was seamless and the follow-up care extraordinary. True premium experience."</p><div class="patient-name">— Nandini Iyer</div></div>
     </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact">
-  <div class="section-title" data-aos="fade-up">Let's Curate Your <span>Dream Feast</span></div>
-  <div class="gold-accent"></div>
-  <div class="contact-grid" data-aos="fade-up">
-    <div class="contact-info">
-      <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
-      <p>48-11/3-1/4, Koneru Rama Krishnaiah St, Currency Nagar 6th, Vijayawada</p><br>
-      <h3><i class="fas fa-phone-alt"></i> Call / WhatsApp</h3>
-      <p>+91 90302 71841</p>
-      <h3><i class="fas fa-envelope"></i> Email</h3>
-      <p>Sparkevents90@gmail.com</p>
-      <div style="margin-top: 2rem;"><i class="fab fa-instagram" style="font-size: 2rem; margin-right: 1rem; cursor: pointer;"></i><i class="fab fa-facebook" style="font-size: 2rem; cursor: pointer;"></i></div>
+<!-- Contact Section with REAL LOCATION and ENHANCED FORM -->
+<section id="contact" class="contact" style="background: #FDFAF2;">
+  <div class="container contact-wrap">
+    <div class="contact-info" data-aos="fade-right">
+      <h2>Luxury <span style="color: #CBA258;">Care Access</span></h2>
+      <p style="margin: 20px 0;">Visit our flagship clinic — designed for privacy, comfort, and clinical superiority.</p>
+      <p><i class="fas fa-map-pin"></i> <strong>21a, Thiruvalluvar St, Kattankulathur, Near V Care Pharmacy, Potheri, Chengalpattu-603203, Tamil Nadu</strong></p>
+      <p><i class="fas fa-phone-alt"></i> +91 99444 55127  |  +91 98765 43210</p>
+      <p><i class="fas fa-envelope-open-text"></i> drsathishclinic@gmail.com</p>
+      
+      <!-- Opening Hours from Real Data -->
+      <div class="opening-hours">
+        <div class="hours-item"><i class="far fa-clock"></i> Mon-Sat: 6:30 AM – 9:00 PM</div>
+        <div class="hours-item"><i class="fas fa-sun"></i> Sunday: 6:30 AM – 9:00 PM</div>
+        <div class="hours-item"><i class="fas fa-stethoscope"></i> Emergency: Always Available</div>
+      </div>
+      
+      <!-- Google Map Embed using exact location from share link -->
+      <div class="map-preview">
+        <iframe src="https://maps.google.com/maps?q=21a%2C%20Thiruvalluvar%20St%2C%20Kattankulathur%2C%20Chengalpattu%2C%20Tamil%20Nadu%20603203&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+      </div>
     </div>
-    <div class="contact-form">
-      <h3>Request a personalized quote</h3>
-      <form id="whatsappContactForm">
-        <div class="input-group"><input type="text" placeholder="Your Name" required id="waName"></div>
-        <div class="input-group"><input type="email" placeholder="Email Address" id="waEmail"></div>
-        <div class="input-group"><input type="tel" placeholder="Phone Number" required id="waPhone"></div>
-        <div class="input-group">
-          <select id="waCategory" required>
-            <option value="">Select Event Category</option>
-            <option value="Wedding">Wedding Catering</option>
-            <option value="Corporate Event">Corporate Event</option>
-            <option value="Birthday Party">Birthday Party</option>
-            <option value="Religious Ceremony">Religious Ceremony</option>
+    
+    <!-- Enhanced Contact Form with Premium Styling -->
+    <div class="contact-form" data-aos="fade-left">
+      <h3 style="margin-bottom: 1.2rem; color: var(--primary-deep);">✨ Request a Private Consultation</h3>
+      <form id="advancedForm">
+        <div class="form-group">
+          <label><i class="fas fa-user"></i> Full Name</label>
+          <input type="text" placeholder="eg. Rajesh Khanna" id="fullname" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-envelope"></i> Email Address</label>
+          <input type="email" placeholder="hello@example.com" id="emailId" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-phone-alt"></i> Phone / WhatsApp</label>
+          <input type="tel" placeholder="+91 99444 55127" id="mobile" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-stethoscope"></i> Treatment Interest</label>
+          <select id="serviceSelect">
+            <option>Select Treatment Interest</option>
+            <option>Regenerative Medicine</option>
+            <option>Aesthetic & Laser</option>
+            <option>Cardiac Wellness</option>
+            <option>General Consultation</option>
+            <option>Neurology & Sleep</option>
           </select>
         </div>
-        <div class="input-group"><textarea rows="2" placeholder="Guest count, budget, special requests" id="waMessage"></textarea></div>
-        <button type="submit" class="submit-btn"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+        <div class="form-group">
+          <label><i class="fas fa-calendar-alt"></i> Preferred Date / Message</label>
+          <textarea rows="2" placeholder="Your preferred date or any specific concern..." id="messageText"></textarea>
+        </div>
+        <button type="submit" class="btn">Secure Appointment <i class="fas fa-calendar-check"></i></button>
+        <p style="font-size:0.7rem; margin-top: 16px; text-align:center;">🔒 HIPAA & GDPR compliant. Priority response within 2 hours.</p>
       </form>
-      <p id="formWhatsFeedback" style="margin-top: 10px; font-size: 0.8rem;"></p>
     </div>
   </div>
 </section>
 
-<div class="download-section" data-aos="zoom-in">
-  <i class="fas fa-file-pdf" style="font-size: 3rem; color: var(--gold-primary); margin-bottom: 1rem;"></i>
-  <h3>Complete Catering Menu PDF</h3>
-  <p>Download our full menu card featuring 150+ authentic dishes.</p>
-  <button id="premiumDownloadBtn" class="btn-primary"><i class="fas fa-download"></i> Download Menu (PDF)</button>
-</div>
-
-<footer class="footer">
-  <p>© 2025 SATYAVATHI CATERINGS — "Where Every Bite Tells a Story of Royalty & Tradition"</p>
-  <p style="margin-top: 0.5rem; font-size: 0.75rem;">WE PLAN IN YOUR BUDGET | Premium Catering Services Since 2010</p>
+<footer>
+  <div class="container">
+    <div class="social-links" style="margin-bottom: 20px;">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>© 2025 Dr. Satish Clinic — Where Science Meets Elegance. All rights reserved.</p>
+    <p style="font-size:0.8rem; margin-top: 8px;">📍 Kattankulathur, Chengalpattu | Open daily 6:30 AM – 9:00 PM</p>
+  </div>
 </footer>
-<a href="https://wa.me/919030271841" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/919944455127" class="floating-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-  // FULL MENU DATA
-  const fullMenu = {
-    "Starters (Veg)": ["Gobi Manchurian", "Chilli Paneer", "Mirchi Bajji", "Punugulu", "Masala Vada", "Onion Pakodi", "Baby Corn 65", "Alu 65", "Mushroom Tikka", "Gare (Medu Vada)"],
-    "Starters (Non-Veg)": ["Chicken 65", "Apollo Fish", "Prawns 65", "Mutton Seekh", "Chicken Lollipop", "Egg Pakoda", "Chicken Majestic", "Pepper Chicken"],
-    "Main Course (Veg)": ["Gutti Vankaya", "Paneer Butter Masala", "Kadai Mushroom", "Dondakaya Fry", "Gongura Curry", "Navratna Korma", "Veg Kolhapuri", "Malai Kofta"],
-    "Main Course (Non-Veg)": ["Natu Kodi Iguru", "Mutton Rogan Josh", "Prawns Curry", "Chicken Chettinad", "Fish Curry", "Egg Curry", "Kodi Kura", "Royyala Vepudu"],
-    "Rice & Biryani": ["Hyderabadi Veg Biryani", "Chicken Dum Biryani", "Mutton Biryani", "Prawns Biryani", "Ghee Rice", "Curd Rice", "Tomato Rice", "Bisi Bele Bath", "Puliyogare"],
-    "Breads": ["Butter Naan", "Garlic Naan", "Tandoori Roti", "Rumali Roti", "Alu Paratha", "Laccha Paratha", "Poori"],
-    "Desserts": ["Gulab Jamun", "Rasmalai", "Jalebi", "Double Ka Meetha", "Carrot Halwa", "Badam Kheer", "Ice Creams", "Rasgulla"]
-  };
-  
-  let activeCat = Object.keys(fullMenu)[0];
-  
-  function renderTabs() {
-    const container = document.getElementById('menuTabs');
-    container.innerHTML = '';
-    Object.keys(fullMenu).forEach(cat => {
-      const btn = document.createElement('button');
-      btn.className = `tab-btn ${activeCat === cat ? 'active' : ''}`;
-      btn.innerText = cat;
-      btn.onclick = () => { activeCat = cat; renderTabs(); renderMenu(); };
-      container.appendChild(btn);
-    });
-  }
-  
-  function renderMenu() {
-    const items = fullMenu[activeCat];
-    const grid = document.getElementById('menuItemsContainer');
-    grid.innerHTML = '';
-    items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'menu-card';
-      let icon = '<i class="fas fa-utensils menu-icon"></i>';
-      if (activeCat.includes('Non-Veg')) icon = '<i class="fas fa-drumstick-bite menu-icon"></i>';
-      if (activeCat.includes('Desserts')) icon = '<i class="fas fa-cake-candles menu-icon"></i>';
-      if (activeCat.includes('Rice')) icon = '<i class="fas fa-bowl-food menu-icon"></i>';
-      card.innerHTML = `${icon}<h3>${item}</h3><p>Chef's signature preparation</p><div><span style="background:#d4af371a; padding:0.2rem 1rem; border-radius:30px;">✦ Premium</span></div>`;
-      grid.appendChild(card);
-    });
-  }
-  
-  // Counter Animation
-  function animateCounters() {
-    const counters = document.querySelectorAll('.counter');
-    counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-target'));
-      let current = 0;
-      const increment = target / 50;
-      const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-          counter.innerText = Math.ceil(current);
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.innerText = target;
-        }
-      };
-      updateCounter();
-    });
-  }
-  
-  // PDF Generation
-  function generateAndDownloadPDF() {
-    const pdfContent = document.createElement('div');
-    pdfContent.style.fontFamily = 'Poppins, sans-serif';
-    pdfContent.style.padding = '30px';
-    pdfContent.style.backgroundColor = '#fffaf5';
-    pdfContent.style.color = '#2c2418';
-    pdfContent.innerHTML = `<div style="text-align:center; border-bottom:2px solid #d4af37; padding-bottom:20px;"><div style="display:flex; align-items:center; justify-content:center; gap:15px;"><div style="background:#d4af37; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center;"><i class="fas fa-crown"></i></div><div><h1 style="font-family:Playfair Display;">SATYAVATHI CATERINGS</h1><p>WE PLAN IN YOUR BUDGET</p></div></div><p>48-11/3-1/4, Koneru Rama Krishnaiah St | +91 90302 71841</p><p style="font-style:italic;">"Where Every Bite Tells a Story of Royalty & Tradition"</p></div><h2 style="text-align:center; color:#b8901d;">✦ PREMIUM MENU CARD ✦</h2>`;
-    for (const [category, items] of Object.entries(fullMenu)) {
-      pdfContent.innerHTML += `<div style="margin-top:25px;"><h3 style="background:#d4af37; display:inline-block; padding:5px 20px; border-radius:30px;">${category}</h3><div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:12px;">${items.map(item => `<span style="background:#f3ede5; padding:6px 14px; border-radius:40px;">${item}</span>`).join('')}</div></div>`;
-    }
-    document.body.appendChild(pdfContent);
-    html2pdf().set({ margin: 0.5, filename: 'Satyavathi_Caterings_Menu.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }).from(pdfContent).save().then(() => document.body.removeChild(pdfContent));
-  }
-  
-  // WhatsApp Integration
-  function sendToWhatsApp(event) {
-    event.preventDefault();
-    const name = document.getElementById('waName').value;
-    const email = document.getElementById('waEmail').value;
-    const phone = document.getElementById('waPhone').value;
-    const category = document.getElementById('waCategory').value;
-    const message = document.getElementById('waMessage').value;
-    if (!name || !phone || !category) {
-      document.getElementById('formWhatsFeedback').innerHTML = '⚠️ Please fill Name, Phone, and Event Category.';
-      return;
-    }
-    let whatsappMsg = `*New Catering Inquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email || 'Not provided'}%0A*Phone:* ${phone}%0A*Event Category:* ${category}%0A*Details:* ${message || 'None'}%0A%0AThank you! Please share menu & package details.`;
-    window.open(`https://wa.me/919030271841?text=${whatsappMsg}`, '_blank');
-    document.getElementById('formWhatsFeedback').innerHTML = '✅ Redirecting to WhatsApp...';
-    setTimeout(() => { document.getElementById('whatsappContactForm').reset(); document.getElementById('formWhatsFeedback').innerHTML = ''; }, 2000);
-  }
-  
-  // Hero Slider
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.hero-slider .slide');
-  setInterval(() => { slides[currentSlide].classList.remove('active'); currentSlide = (currentSlide + 1) % slides.length; slides[currentSlide].classList.add('active'); }, 5000);
-  
-  // Initialize
   AOS.init({ duration: 800, once: true, offset: 80 });
-  renderTabs(); renderMenu();
-  setTimeout(animateCounters, 500);
   
-  new Swiper('.mySwiper', { loop: true, autoplay: { delay: 3000 }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, slidesPerView: 1, breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
-  
-  // Mobile Menu
-  const toggleBtn = document.getElementById('menuToggle');
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobileMenuBtn');
   const navLinksDiv = document.getElementById('navLinks');
-  toggleBtn.addEventListener('click', () => navLinksDiv.classList.toggle('mobile-open'));
-  document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => navLinksDiv.classList.remove('mobile-open')));
-  
-  // PDF Buttons
-//   document.getElementById('downloadPdfBtn')?.addEventListener('click', generateAndDownloadPDF);
-//   document.getElementById('premiumDownloadBtn')?.addEventListener('click', generateAndDownloadPDF);
-//   document.getElementById('heroDownloadBtn')?.addEventListener('click', generateAndDownloadPDF);
-  
-function downloadMenuPDF() {
-  const link = document.createElement('a');
-  link.href = 'menu.pdf'; // your PDF file name
-  link.download = 'Satyavathi_Menu.pdf';
-  link.click();
-}
+  mobileBtn.addEventListener('click', () => navLinksDiv.classList.toggle('active'));
+  document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinksDiv.classList.remove('active')));
 
-// PDF Buttons
-document.getElementById('downloadPdfBtn')?.addEventListener('click', downloadMenuPDF);
-document.getElementById('premiumDownloadBtn')?.addEventListener('click', downloadMenuPDF);
-document.getElementById('heroDownloadBtn')?.addEventListener('click', downloadMenuPDF);
-  // WhatsApp Form
-  document.getElementById('whatsappContactForm').addEventListener('submit', sendToWhatsApp);
+  // Sticky navbar
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if(window.scrollY > 30) navbar.style.background = 'rgba(253, 252, 248, 0.98)';
+    else navbar.style.background = 'rgba(253, 252, 248, 0.92)';
+  });
+
+  // Enhanced form handler
+  const contactForm = document.getElementById('advancedForm');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('fullname').value.trim();
+    if(name) {
+      alert(`✨ Dear ${name}, your exclusive consultation request is received. Our premium care team will reach out within 2 hours. ✨`);
+      contactForm.reset();
+    } else {
+      alert('Please provide your name to schedule a VIP appointment.');
+    }
+  });
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const target = document.querySelector(targetId);
+      if(target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if(navLinksDiv.classList.contains('active')) navLinksDiv.classList.remove('active');
+      }
+    });
+  });
 </script>
 </body>
 </html>
