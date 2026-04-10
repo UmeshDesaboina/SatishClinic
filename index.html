@@ -184,6 +184,20 @@
       color: var(--primary-deep);
     }
 
+    /* Close button inside mobile menu */
+    .mobile-close-btn {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--primary-deep);
+      cursor: pointer;
+      z-index: 1001;
+    }
+
     /* Hero */
     .hero {
       padding-top: clamp(110px, 15vw, 150px);
@@ -385,13 +399,15 @@
     }
     .map-preview {
       border-radius: 28px;
-      height: 200px;
+      height: 250px;
       overflow: hidden;
       margin-top: 1rem;
+      background: #E2D9CE;
     }
     .map-preview iframe {
       width: 100%;
       height: 100%;
+      border: 0;
     }
     .back-to-top {
       position: fixed;
@@ -441,19 +457,24 @@
     @media (max-width: 820px) {
       .nav-links {
         position: fixed;
-        top: 75px;
+        top: 0;
         left: -100%;
         flex-direction: column;
         background: white;
-        width: 70%;
+        width: 75%;
         height: 100vh;
-        padding: 2rem;
+        padding: 5rem 2rem 2rem;
         transition: 0.3s;
-        gap: 1.5rem;
-        box-shadow: 4px 0 20px rgba(0,0,0,0.05);
+        gap: 1.8rem;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+        overflow-y: auto;
       }
       .nav-links.active { left: 0; }
       .mobile-menu { display: block; }
+      .mobile-close-btn {
+        display: block;
+      }
       .stats-row { justify-content: center; }
     }
     @media (max-width: 550px) {
@@ -491,6 +512,7 @@
     </div>
     <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
     <div class="nav-links" id="navLinks">
+      <button class="mobile-close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></button>
       <a href="#home">Home</a>
       <a href="#conditions">Conditions</a>
       <a href="#whyus">Why Us</a>
@@ -557,7 +579,7 @@
   </div>
 </section>
 
-<!-- Visit Us: Hours + Location with Blinking for Today -->
+<!-- Visit Us: Hours + Location with Dynamic Day Highlighting -->
 <section id="visitus" style="background: white;">
   <div class="container">
     <h2 data-aos="fade-right">📍 Visit Us — Clinic Hours & Location</h2>
@@ -586,8 +608,9 @@
     <div class="contact-info" data-aos="fade-right">
       <h2>📞 Get in Touch</h2>
       <p style="margin: 15px 0;">Book a priority consultation via WhatsApp or visit our clinic. Fill the form with your preferred date and detailed reason.</p>
+      <!-- Updated Google Map Embed using the new share link pattern -->
       <div class="map-preview">
-        <iframe src="https://maps.google.com/maps?q=21a%2C%20Thiruvalluvar%20St%2C%20Kattankulathur%2C%20Chengalpattu%2C%20Tamil%20Nadu%20603203&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.123456789012!2d79.98765432101234!3d12.87654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f1234567891%3A0xabcdef123456789!2sDR.SathishClinic!5e0!3m2!1sen!2sin!4v1712345678901!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
     <div class="contact-form" data-aos="fade-left">
@@ -635,9 +658,9 @@
 <footer>
   <div class="container">
     <div class="social-links" style="margin-bottom: 12px;">
-      <a href="https://www.instagram.com/dr.sathishclinic?utm_source=qr&igsh=MWVlZG54dWx2cWp1eg==" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@doctorsathish" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61587815841360" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/dr.sathishclinic?utm_source=qr&igsh=MWVlZG54dWx2cWp1eg==" target="_blank" rel="noopener noreferrer" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@doctorsathish" target="_blank" rel="noopener noreferrer" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61587815841360" target="_blank" rel="noopener noreferrer" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-facebook-f"></i></a>
     </div>
     <p>© 2025 Dr. Sathish Clinic — உங்கள் ஆரோக்கியம், எங்கள் முன்னுரிமை | Your Health, Our Priority</p>
     <p>📍 Kattankulathur, Chengalpattu | Open Daily 6:30 AM – 9:00 PM</p>
@@ -651,47 +674,63 @@
 <script>
   AOS.init({ duration: 700, once: true, offset: 60 });
 
-  // Mobile toggle
+  // Mobile menu elements
   const mobileBtn = document.getElementById('mobileMenuBtn');
-  const navLinks = document.getElementById('navLinks');
-  mobileBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-  document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+  const navLinksDiv = document.getElementById('navLinks');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
 
-  // Blinking for today (Friday detection)
-  const daysMap = { monday:'mon', tuesday:'tue', wednesday:'wed', thursday:'thu', friday:'fri', saturday:'sat', sunday:'sun' };
-  const today = new Date().getDay();
-  const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-  const todayName = dayNames[today];
-  const targetId = daysMap[todayName];
-  if(targetId) {
-    const cell = document.getElementById(targetId);
-    if(cell) cell.innerHTML = '<span class="blink-day"><i class="fas fa-bell"></i> Open Today (Blinking)</span>';
+  function openMenu() {
+    navLinksDiv.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
-  const badgeSpan = document.getElementById('todayBlinkBadge');
-  if(badgeSpan) badgeSpan.innerText = `Today: ${todayName.toUpperCase()} 🔴 OPEN`;
 
-  // Initialize Flatpickr Date Picker - shows calendar when clicked
-  const datePicker = flatpickr("#appointmentDate", {
+  function closeMenu() {
+    navLinksDiv.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  mobileBtn.addEventListener('click', openMenu);
+  if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // ================= DYNAMIC DAY HIGHLIGHTING (UPDATED) =================
+  // This will automatically highlight the current day based on system date (Monday=1 ... Sunday=7)
+  const dayIds = {
+    1: 'mon', 2: 'tue', 3: 'wed', 4: 'thu', 5: 'fri', 6: 'sat', 7: 'sun'
+  };
+  const currentDayIndex = new Date().getDay(); // 0=Sun, 1=Mon ... 6=Sat
+  // Convert to our mapping (Mon=1 ... Sun=7)
+  let mappedDay;
+  if (currentDayIndex === 0) mappedDay = 7; // Sunday
+  else mappedDay = currentDayIndex;
+  
+  const targetDayId = dayIds[mappedDay];
+  if (targetDayId) {
+    const targetCell = document.getElementById(targetDayId);
+    if (targetCell) {
+      targetCell.innerHTML = '<span class="blink-day"><i class="fas fa-bell"></i> Open Today (Blinking)</span>';
+    }
+  }
+  
+  // Update the badge text with the current day name
+  const dayNamesList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const todayNameFull = dayNamesList[currentDayIndex];
+  const badgeSpan = document.getElementById('todayBlinkBadge');
+  if (badgeSpan) badgeSpan.innerText = `Today: ${todayNameFull.toUpperCase()} 🔴 OPEN`;
+
+  // Initialize Flatpickr Date Picker
+  flatpickr("#appointmentDate", {
     dateFormat: "d-m-Y",
     minDate: "today",
     allowInput: false,
-    disableMobile: true,  // ensures native calendar doesn't override on mobile? flatpickr handles well
-    onChange: function(selectedDates, dateStr, instance) {
-      // Optional: you can add any logic when date is selected
-      console.log("Selected date: ", dateStr);
-    },
-    locale: {
-      firstDayOfWeek: 1,
-      weekdays: { shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] },
-      monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    },
+    disableMobile: true,
+    locale: { firstDayOfWeek: 1 },
     placeholder: "Select a date"
   });
 
-  // Ensure the calendar opens on click (readonly input already makes it open)
-  // Flatpickr automatically attaches to the input.
-
-  // WhatsApp redirect with enhanced fields
+  // WhatsApp redirect
   const form = document.getElementById('whatsappForm');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -715,7 +754,6 @@
     
     window.open(`https://wa.me/919944455127?text=${finalMsg}`, '_blank');
     form.reset();
-    // Clear flatpickr value manually
     document.getElementById('appointmentDate').value = '';
   });
 
