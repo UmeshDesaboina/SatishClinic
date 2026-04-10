@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Dr. Satish Clinic | Advanced Medicine & Aesthetics</title>
+  <title>Dr. Sathish Clinic | Family Medicine & Primary Care</title>
   <!-- Google Fonts + Font Awesome 6 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- AOS Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -39,25 +39,15 @@
       --transition-smooth: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1.05);
     }
 
-    @keyframes shimmerMove {
-      0% { background-position: -150% 0; }
-      100% { background-position: 150% 0; }
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(203, 162, 88, 0.2);
-    }
-
     .container {
       max-width: 1320px;
       margin: 0 auto;
       padding: 0 36px;
+      width: 100%;
     }
 
     section {
-      padding: 100px 0;
+      padding: 90px 0;
       position: relative;
     }
 
@@ -67,7 +57,7 @@
     }
 
     h2 {
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       margin-bottom: 1rem;
       color: var(--primary-deep);
     }
@@ -76,7 +66,7 @@
       font-size: 1.2rem;
       color: var(--text-soft);
       max-width: 700px;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
       border-left: 5px solid var(--accent-gold);
       padding-left: 1.6rem;
     }
@@ -108,24 +98,12 @@
       box-shadow: 0 20px 28px -10px rgba(10, 47, 50, 0.4);
     }
 
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--primary-deep);
-      color: var(--primary-deep);
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      background: var(--primary-deep);
-      color: white;
-    }
-
-    /* navbar */
+    /* Navbar */
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(253, 252, 248, 0.92);
+      background: rgba(253, 252, 248, 0.96);
       backdrop-filter: blur(16px);
       z-index: 1000;
       transition: 0.3s;
@@ -136,22 +114,41 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 36px;
+      padding: 12px 36px;
       max-width: 1400px;
       margin: 0 auto;
+      flex-wrap: wrap;
     }
 
-    .logo h3 {
-      font-size: 1.9rem;
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo-img {
+      height: 70px;
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #0A2F32;
+      padding: 8px 16px;
+    }
+
+    .logo-text h3 {
+      font-size: 1.7rem;
       font-weight: 800;
       background: linear-gradient(135deg, #0A2F32 0%, #1C4B4F 100%);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      line-height: 1.2;
     }
 
-    .logo span {
-      font-size: 0.8rem;
+    .logo-text span {
+      font-size: 0.75rem;
       letter-spacing: 1px;
       color: var(--accent-gold);
       font-weight: 500;
@@ -159,8 +156,9 @@
 
     .nav-links {
       display: flex;
-      gap: 2.8rem;
+      gap: 2.5rem;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -181,13 +179,12 @@
       color: var(--primary-deep);
     }
 
-    /* hero */
+    /* Hero */
     .hero {
-      padding-top: 160px;
-      padding-bottom: 80px;
+      padding-top: 150px;
+      padding-bottom: 70px;
       background: radial-gradient(ellipse at 80% 30%, #FFF8EF, #FDFAF2);
       position: relative;
-      overflow: hidden;
     }
 
     .hero-grid {
@@ -199,21 +196,23 @@
 
     .hero-content {
       flex: 1.2;
+      min-width: 280px;
     }
 
-    .badge-premium {
+    .tamil-quote {
       background: var(--accent-gold-light);
-      color: #8B6B3D;
-      padding: 6px 20px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 80px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #7A5A2E;
+      margin-bottom: 20px;
       display: inline-block;
-      margin-bottom: 24px;
+      font-style: italic;
     }
 
     .hero-content h1 {
-      font-size: 3.8rem;
+      font-size: clamp(2rem, 5vw, 3.6rem);
       line-height: 1.2;
       margin-bottom: 20px;
       color: var(--primary-deep);
@@ -224,38 +223,48 @@
       border-bottom: 3px dotted var(--accent-gold);
     }
 
-    .hero-stats {
+    .stats-row {
       display: flex;
-      gap: 2.5rem;
-      margin-top: 40px;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 25px 0;
     }
 
-    .stat-item h4 {
+    .stat-badge {
+      background: white;
+      padding: 12px 20px;
+      border-radius: 60px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat-badge i {
       font-size: 2rem;
-      font-weight: 800;
+      color: var(--accent-gold);
+    }
+
+    .stat-badge strong {
+      font-size: 1.4rem;
       color: var(--primary-deep);
     }
 
-    /* doctor card */
+    /* Doctor Card */
     .doctor-card {
       flex: 0.9;
       background: white;
       border-radius: 48px;
-      padding: 1.5rem;
+      padding: 1.8rem;
       text-align: center;
       box-shadow: var(--shadow-premium);
       transition: var(--transition-smooth);
       border: 1px solid rgba(203, 162, 88, 0.4);
     }
 
-    .doctor-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
-    }
-
     .doctor-img-placeholder {
-      width: 220px;
-      height: 220px;
+      width: 260px;
+      height: 260px;
       background: linear-gradient(145deg, #E8E0D0, #D6CDBB);
       border-radius: 50%;
       margin: 0 auto 20px;
@@ -263,7 +272,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
     }
 
     .doctor-img-placeholder img {
@@ -274,273 +283,109 @@
     }
 
     .doctor-card h3 {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       margin-top: 12px;
     }
 
-    .doctor-title {
-      color: var(--accent-gold);
-      font-weight: 600;
-    }
-
-    /* services */
-    .services {
-      background: #FFFFFF;
-    }
-
-    .services-grid {
+    /* Features Grid (Why Choose Us + Common Conditions) */
+    .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
+      margin-bottom: 3rem;
     }
-
-    .service-card {
-      background: var(--bg-card);
+    .feature-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem;
+      box-shadow: var(--shadow-premium);
+      transition: transform 0.3s;
+      border: 1px solid var(--border-soft);
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+    .conditions-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+    .condition-tag {
+      background: var(--accent-gold-light);
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    /* Clinic Hours Table with Blinking */
+    .clinic-hours-card {
+      background: white;
       border-radius: 36px;
       padding: 2rem;
-      transition: var(--transition-smooth);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.04);
-    }
-
-    .service-card:hover {
-      transform: translateY(-12px);
-      border-color: var(--accent-gold);
       box-shadow: var(--shadow-premium);
+      margin-top: 2rem;
     }
-
-    .service-icon {
-      background: var(--primary-deep);
-      width: 80px;
-      height: 80px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.8rem;
-      color: white;
-      font-size: 2.2rem;
-      transition: 0.3s;
-    }
-
-    /* awards bar */
-    .awards-bar {
-      background: var(--bg-warm);
-      border-radius: 60px;
-      padding: 2rem;
-      margin: 3rem 0;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .award-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-    }
-
-    .award-item i {
-      font-size: 2rem;
-      color: var(--accent-gold);
-    }
-
-    /* about */
-    .about-flex {
-      display: flex;
-      gap: 4rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .about-text {
-      flex: 1.3;
-    }
-
-    .signature {
-      font-size: 1.1rem;
-      font-style: italic;
-      margin-top: 25px;
-      color: var(--accent-gold);
-      border-top: 2px solid #E9E2D4;
-      padding-top: 20px;
-    }
-
-    .experience-highlight {
-      background: var(--primary-deep);
-      border-radius: 32px;
-      padding: 2rem;
-      color: white;
-      flex: 0.9;
-    }
-
-    /* contact form - ENHANCED STYLING */
-    .contact-form {
-      background: white;
-      border-radius: 48px;
-      padding: 2rem;
-      box-shadow: var(--shadow-premium);
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(203, 162, 88, 0.2);
-    }
-    .contact-form:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-hover);
-    }
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .form-group input, 
-    .form-group select, 
-    .form-group textarea {
+    .hours-table {
       width: 100%;
-      padding: 14px 22px;
-      border: 1.5px solid #E9E2D4;
-      border-radius: 60px;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      background: #FFFFFF;
-      transition: all 0.25s ease;
-      outline: none;
-      color: var(--text-dark);
+      border-collapse: collapse;
     }
-    .form-group textarea {
-      border-radius: 32px;
-      resize: vertical;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 0 4px rgba(203, 162, 88, 0.2);
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
+    .hours-table td {
+      padding: 14px 8px;
+      border-bottom: 1px solid var(--border-soft);
       font-weight: 500;
+    }
+    .blink-day {
+      background-color: #FFF0D4;
+      border-radius: 40px;
+      font-weight: 800;
       color: var(--primary-deep);
-      padding-left: 10px;
-    }
-    .contact-form button {
-      width: 100%;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    /* virtual badge */
-    .virtual-badge {
-      background: rgba(203, 162, 88, 0.15);
-      border-radius: 100px;
-      padding: 8px 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* testimonials */
-    .testimonial-grid {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .test-card {
-      background: white;
-      border-radius: 32px;
-      padding: 2rem;
-      max-width: 350px;
-      transition: all 0.3s;
-      box-shadow: var(--shadow-premium);
-    }
-
-    /* contact & map */
-    .contact-wrap {
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .contact-info {
-      flex: 1;
-    }
-    .map-preview {
-      background: #E2D9CE;
-      border-radius: 32px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-      overflow: hidden;
-      border: 1px solid var(--accent-gold-light);
-    }
-    .map-preview iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .opening-hours {
-      background: var(--bg-warm);
-      border-radius: 32px;
-      padding: 1.4rem;
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: space-between;
-    }
-    .hours-item {
-      font-weight: 500;
-    }
-
-    footer {
-      background: #082426;
-      color: #C6D6D8;
-      padding: 40px 0;
-      text-align: center;
-    }
-    .social-links a {
-      color: #C6D6D8;
-      margin: 0 12px;
-      font-size: 1.4rem;
-      transition: 0.2s;
+      animation: subtlePulse 1.2s infinite;
+      padding: 5px 12px;
       display: inline-block;
     }
-    .social-links a:hover {
-      color: var(--accent-gold);
+    @keyframes subtlePulse {
+      0% { background-color: #FFF0D4; box-shadow: 0 0 0 0 rgba(203,162,88,0.4);}
+      70% { background-color: #FFE2A4; box-shadow: 0 0 0 6px rgba(203,162,88,0);}
+      100% { background-color: #FFF0D4; box-shadow: 0 0 0 0 rgba(203,162,88,0);}
     }
-
-    @media (max-width: 950px) {
-      .nav-links {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        flex-direction: column;
-        background: white;
-        width: 80%;
-        height: 100vh;
-        padding: 2rem;
-        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
-        transition: 0.3s;
-      }
-      .nav-links.active {
-        left: 0;
-      }
-      .mobile-menu {
-        display: block;
-      }
-      .hero-content h1 {
-        font-size: 2.6rem;
-      }
-      h2 {
-        font-size: 2.2rem;
-      }
-      .container {
-        padding: 0 20px;
-      }
+    .current-day-badge {
+      background: var(--accent-gold);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: bold;
     }
-
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      background: var(--primary-deep);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 99;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top:hover {
+      background: var(--primary-slate);
+      transform: translateY(-4px);
+    }
     .floating-whatsapp {
       position: fixed;
       bottom: 28px;
@@ -555,12 +400,75 @@
       font-size: 2rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       z-index: 99;
-      transition: 0.2s;
       color: white;
     }
-    .floating-whatsapp:hover {
-      transform: scale(1.08);
-      background: #20b85f;
+    .contact-form {
+      background: white;
+      border-radius: 48px;
+      padding: 2rem;
+      box-shadow: var(--shadow-premium);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 14px 22px;
+      border: 1.5px solid #E9E2D4;
+      border-radius: 60px;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-group textarea {
+      border-radius: 32px;
+    }
+    .contact-wrap {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .map-preview {
+      background: #E2D9CE;
+      border-radius: 32px;
+      height: 220px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    .map-preview iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    footer {
+      background: #082426;
+      color: #C6D6D8;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .social-links a {
+      color: #C6D6D8;
+      margin: 0 12px;
+      font-size: 1.4rem;
+    }
+    @media (max-width: 950px) {
+      .nav-links {
+        position: fixed;
+        top: 85px;
+        left: -100%;
+        flex-direction: column;
+        background: white;
+        width: 75%;
+        height: 100vh;
+        padding: 2rem;
+        transition: 0.3s;
+        gap: 1.8rem;
+      }
+      .nav-links.active { left: 0; }
+      .mobile-menu { display: block; }
+      .container { padding: 0 20px; }
+      .doctor-img-placeholder { width: 200px; height: 200px; }
     }
   </style>
 </head>
@@ -568,16 +476,19 @@
 
 <div class="navbar" id="navbar">
   <div class="nav-container">
-    <div class="logo">
-      <h3>Dr. Satish Clinic</h3>
-      <span>PREMIUM HEALTH & AESTHETICS</span>
+    <div class="logo-area">
+      <img src="Logo maker project.png" alt="MS Group Logo" class="logo-img">
+      <div class="logo-text">
+        <h3>Dr. Sathish Clinic</h3>
+        <span>GENERAL MEDICINE & FAMILY CARE</span>
+      </div>
     </div>
     <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
     <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">Doctor</a>
-      <a href="#testimonials">Reviews</a>
+      <a href="#conditions">Conditions</a>
+      <a href="#whyus">Why Us</a>
+      <a href="#visitus">Visit Us</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -587,140 +498,102 @@
 <section id="home" class="hero">
   <div class="container hero-grid">
     <div class="hero-content" data-aos="fade-up">
-      <div class="badge-premium"><i class="fas fa-certificate"></i> Top 1% Clinic Worldwide</div>
-      <h1>Redefining <span class="highlight">Healthcare</span> With Precision & Compassion</h1>
-      <p>Cutting-edge diagnostics, holistic wellness, and regenerative therapies — experience the future of medicine at Dr. Satish Clinic.</p>
-      <div class="virtual-badge"><i class="fas fa-video"></i> Virtual Consult Available | Global Patients</div>
-      <div class="hero-stats">
-        <div class="stat-item"><h4>15+ Years</h4><span>Global Excellence</span></div>
-        <div class="stat-item"><h4>10k+</h4><span>Smiling Patients</span></div>
-        <div class="stat-item"><h4>50+</h4><span>Advanced Tech</span></div>
+      <div class="tamil-quote"><i class="fas fa-quote-left"></i> உடல் நலமே மெய்ப்பொருள் | மருத்துவம் காப்பது மனிதநேயம்</div>
+      <h1>Holistic Healing for <span class="highlight">Every Age</span> – Kids, Adults & Seniors</h1>
+      <p>Compassionate, evidence-based primary care. Specialized in family medicine, preventive health, and personalized treatments.</p>
+      <div class="stats-row">
+        <div class="stat-badge"><i class="fas fa-chart-line"></i> <div><strong>99% Success Rate</strong><br>Patient Satisfaction</div></div>
+        <div class="stat-badge"><i class="fas fa-smile"></i> <div><strong>12k+</strong><br>Happy Families</div></div>
       </div>
-      <a href="#contact" class="btn" style="margin-top: 20px;">Book VIP Slot <i class="fas fa-arrow-right"></i></a>
+      <a href="#contact" class="btn" style="margin-top: 15px;">Book Consultation <i class="fab fa-whatsapp"></i></a>
     </div>
-    <!-- Doctor Photo Card -->
-    <div class="doctor-card" data-aos="fade-left" data-aos-delay="100">
+    <div class="doctor-card" data-aos="fade-left">
       <div class="doctor-img-placeholder">
-        <img src="https://placehold.co/400x400/CFC6B8/FFFFFF?text=Dr.+Satish+Photo" alt="Dr. Satish Portrait">
+        <img src="DR.jpeg" alt="Dr. Sathish">
       </div>
-      <h3>Dr. Satish Mehta</h3>
-      <div class="doctor-title">MD, FACC | Director of Advanced Medicine</div>
-      <p style="margin-top: 10px;"><i class="fas fa-star" style="color:#CBA258;"></i> 30+ International Awards</p>
+      <h3>Dr. Sathish Kumar</h3>
+      <div class="doctor-title" style="color:var(--accent-gold);">MBBS, AFIH, MBA | General Physician</div>
+      <p><i class="fas fa-child"></i> Kids | <i class="fas fa-female"></i> Women | <i class="fas fa-male"></i> Adults</p>
     </div>
   </div>
 </section>
 
-<!-- Awards Bar -->
-<div class="container awards-bar" data-aos="zoom-in">
-  <div class="award-item"><i class="fas fa-trophy"></i> Best Multi-Specialty Clinic 2024</div>
-  <div class="award-item"><i class="fas fa-microscope"></i> Robotic Surgery Excellence</div>
-  <div class="award-item"><i class="fas fa-leaf"></i> Eco-Luxury Healthcare</div>
-  <div class="award-item"><i class="fas fa-hand-holding-heart"></i> Patient-Centric Design</div>
-</div>
-
-<!-- Services -->
-<section id="services" class="services">
+<!-- Quick Reference: Common Conditions We Treat -->
+<section id="conditions" style="padding: 60px 0; background:#FFFFFF;">
   <div class="container">
-    <h2 data-aos="fade-right">Precision Treatments</h2>
-    <div class="section-subhead" data-aos="fade-right" data-aos-delay="100">Integrative medicine, advanced aesthetics & personalized care plans.</div>
-    <div class="services-grid">
-      <div class="service-card" data-aos="flip-up"><div class="service-icon"><i class="fas fa-heartbeat"></i></div><h3>Cardio-Metabolic Clinic</h3><p>Advanced lipid, hypertension & reversal programs.</p></div>
-      <div class="service-card" data-aos="flip-up" data-aos-delay="50"><div class="service-icon"><i class="fas fa-dna"></i></div><h3>Regenerative Medicine</h3><p>PRP, stem cells & peptide therapies for longevity.</p></div>
-      <div class="service-card" data-aos="flip-up" data-aos-delay="100"><div class="service-icon"><i class="fas fa-spa"></i></div><h3>Aesthetic & Laser</h3><p>Morpheus8, Botox, fillers & skin tightening.</p></div>
-      <div class="service-card" data-aos="flip-up" data-aos-delay="150"><div class="service-icon"><i class="fas fa-brain"></i></div><h3>Neurology & Sleep</h3><p>Advanced migraine & sleep apnea solutions.</p></div>
+    <h2 data-aos="fade-right">📋 Quick Reference: <span style="color:#CBA258;">Common Conditions We Treat</span></h2>
+    <div class="conditions-list" data-aos="fade-up">
+      <span class="condition-tag">🤒 Fever & Infections</span>
+      <span class="condition-tag">🩺 Diabetes Management</span>
+      <span class="condition-tag">❤️ Hypertension</span>
+      <span class="condition-tag">🫁 Asthma & Allergies</span>
+      <span class="condition-tag">🤰 Pregnancy Care</span>
+      <span class="condition-tag">👶 Pediatric Vaccination</span>
+      <span class="condition-tag">🧠 Thyroid Disorders</span>
+      <span class="condition-tag">🦴 Joint Pains</span>
+      <span class="condition-tag">😴 Sleep Disorders</span>
+      <span class="condition-tag">🧘 Stress & Anxiety</span>
+      <span class="condition-tag">🍎 Nutritional Deficiencies</span>
+      <span class="condition-tag">🏥 Occupational Health</span>
     </div>
   </div>
 </section>
 
-<!-- About + Doctor -->
-<section id="about" class="about" style="background: #FEFAF5;">
-  <div class="container about-flex">
-    <div class="about-text" data-aos="fade-right">
-      <h2>Meet Dr. Satish <span style="color: #CBA258;">Mehta</span></h2>
-      <p style="margin: 20px 0; line-height:1.5">A visionary physician with dual fellowships in internal medicine and aesthetic medicine. Dr. Satish has been featured in "Top Doctors of Asia" and pioneers non-invasive techniques. He believes in empathy-driven excellence, combining advanced diagnostics with a holistic approach to restore vitality.</p>
-      <div class="virtual-badge" style="margin-bottom: 12px;"><i class="fas fa-language"></i> Fluent: English, Hindi, French</div>
-      <div class="signature"><i class="fas fa-quote-right"></i> Every patient is unique — we craft bespoke health journeys.</div>
-    </div>
-    <div class="experience-highlight" data-aos="fade-left">
-      <i class="fas fa-user-md" style="font-size: 2rem; color: var(--accent-gold);"></i>
-      <h3 style="color:white; margin: 15px 0;">Clinical Excellence</h3>
-      <p>✔ 15,000+ successful procedures</p>
-      <p>✔ Internationally trained (Harvard, Mayo Clinic)</p>
-      <p>✔ 98% patient satisfaction score</p>
-      <p>✔ Cutting-edge research integrations</p>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section id="testimonials" class="testimonials" style="background: #FFFFFF;">
+<!-- Why Choose Us + Extra Features -->
+<section id="whyus" style="background:#FEFAF5; padding: 70px 0;">
   <div class="container">
-    <h2 data-aos="fade-up">Patient Love <span style="color: #CBA258;">& Trust</span></h2>
-    <div class="section-subhead" data-aos="fade-up">Real stories from our premium healthcare journeys.</div>
-    <div class="testimonial-grid">
-      <div class="test-card" data-aos="zoom-in"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Dr. Satish's attention to detail is unmatched. The clinic feels like a 5-star hotel and the medical expertise is world-class."</p><div class="patient-name">— Sneha Reddy</div></div>
-      <div class="test-card" data-aos="zoom-in" data-aos-delay="100"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Thanks to his regenerative treatments, I recovered faster than expected. Highly recommend the aesthetic team."</p><div class="patient-name">— Vikram Sethi</div></div>
-      <div class="test-card" data-aos="zoom-in" data-aos-delay="200"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"The virtual consultation was seamless and the follow-up care extraordinary. True premium experience."</p><div class="patient-name">— Nandini Iyer</div></div>
+    <h2 data-aos="fade-right">✨ Why Choose <span style="color:#CBA258;">Dr. Sathish Clinic?</span></h2>
+    <div class="features-grid">
+      <div class="feature-card" data-aos="zoom-in"><i class="fas fa-user-md" style="font-size: 2.5rem; color:var(--accent-gold);"></i><h3 style="margin:15px 0">Expert General Physician</h3><p>15+ years of hands-on experience, MBBS, AFIH, MBA in Healthcare — holistic & evidence-based approach.</p></div>
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-clock" style="font-size: 2.5rem; color:var(--accent-gold);"></i><h3 style="margin:15px 0">Extended Hours</h3><p>Open 6:30 AM – 9:00 PM including Sundays, making quality healthcare accessible for all.</p></div>
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-hand-holding-heart" style="font-size: 2.5rem; color:var(--accent-gold);"></i><h3 style="margin:15px 0">Compassionate Care</h3><p>Personalized treatment plans, Tamil & English fluent, respecting cultural values.</p></div>
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-laptop-medical" style="font-size: 2.5rem; color:var(--accent-gold);"></i><h3 style="margin:15px 0">Teleconsultation</h3><p>Virtual follow-ups & emergency guidance via WhatsApp/Video call for convenience.</p></div>
+    </div>
+    <div class="tamil-quote" style="margin-top: 20px; text-align:center; display:block;">“நோய் தீர்ப்பதை விட நோய் வராமல் தடுப்பதே சிறந்த மருத்துவம்” – Preventive care is our forte.</div>
+  </div>
+</section>
+
+<!-- Visit Us: Clinic Hours & Location with Blinking Today (Friday) -->
+<section id="visitus" style="padding: 70px 0; background:#FFFFFF;">
+  <div class="container">
+    <h2 data-aos="fade-right">📍 Visit Us — Clinic Hours & Location</h2>
+    <div class="clinic-hours-card" data-aos="fade-up">
+      <h3><i class="far fa-calendar-alt"></i> Weekly Schedule <span id="todayBlinkBadge" class="current-day-badge" style="margin-left: 15px;"></span></h3>
+      <table class="hours-table">
+        <tr><td><strong>Monday</strong></td><td>6:30 AM – 9:00 PM</td><td id="mon"></td></tr>
+        <tr><td><strong>Tuesday</strong></td><td>6:30 AM – 9:00 PM</td><td id="tue"></td></tr>
+        <tr><td><strong>Wednesday</strong></td><td>6:30 AM – 9:00 PM</td><td id="wed"></td></tr>
+        <tr><td><strong>Thursday</strong></td><td>6:30 AM – 9:00 PM</td><td id="thu"></td></tr>
+        <tr><td><strong>Friday</strong></td><td>6:30 AM – 9:00 PM</td><td id="fri"></td></tr>
+        <tr><td><strong>Saturday</strong></td><td>6:30 AM – 9:00 PM</td><td id="sat"></td></tr>
+        <tr><td><strong>Sunday</strong></td><td>6:30 AM – 9:00 PM</td><td id="sun"></td></tr>
+      </table>
+      <div style="margin-top: 20px; padding: 12px; background: var(--accent-gold-light); border-radius: 28px;">
+        <i class="fas fa-map-marker-alt"></i> <strong>21a, Thiruvalluvar St, Kattankulathur, Near V Care Pharmacy, Potheri, Chengalpattu-603203</strong>
+      </div>
+      <div style="margin-top: 15px;"><i class="fas fa-phone-alt"></i> +91 99444 55127 | Emergency Available 24/7</div>
     </div>
   </div>
 </section>
 
-<!-- Contact Section with REAL LOCATION and ENHANCED FORM -->
-<section id="contact" class="contact" style="background: #FDFAF2;">
+<!-- Contact + WhatsApp Form -->
+<section id="contact" style="background: #FDFAF2; padding: 70px 0;">
   <div class="container contact-wrap">
     <div class="contact-info" data-aos="fade-right">
-      <h2>Luxury <span style="color: #CBA258;">Care Access</span></h2>
-      <p style="margin: 20px 0;">Visit our flagship clinic — designed for privacy, comfort, and clinical superiority.</p>
-      <p><i class="fas fa-map-pin"></i> <strong>21a, Thiruvalluvar St, Kattankulathur, Near V Care Pharmacy, Potheri, Chengalpattu-603203, Tamil Nadu</strong></p>
-      <p><i class="fas fa-phone-alt"></i> +91 99444 55127  |  +91 98765 43210</p>
-      <p><i class="fas fa-envelope-open-text"></i> drsathishclinic@gmail.com</p>
-      
-      <!-- Opening Hours from Real Data -->
-      <div class="opening-hours">
-        <div class="hours-item"><i class="far fa-clock"></i> Mon-Sat: 6:30 AM – 9:00 PM</div>
-        <div class="hours-item"><i class="fas fa-sun"></i> Sunday: 6:30 AM – 9:00 PM</div>
-        <div class="hours-item"><i class="fas fa-stethoscope"></i> Emergency: Always Available</div>
-      </div>
-      
-      <!-- Google Map Embed using exact location from share link -->
+      <h2>📞 Get in Touch</h2>
+      <p style="margin: 20px 0;">Book a priority consultation via WhatsApp or visit our clinic.</p>
       <div class="map-preview">
         <iframe src="https://maps.google.com/maps?q=21a%2C%20Thiruvalluvar%20St%2C%20Kattankulathur%2C%20Chengalpattu%2C%20Tamil%20Nadu%20603203&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
-    
-    <!-- Enhanced Contact Form with Premium Styling -->
     <div class="contact-form" data-aos="fade-left">
-      <h3 style="margin-bottom: 1.2rem; color: var(--primary-deep);">✨ Request a Private Consultation</h3>
-      <form id="advancedForm">
-        <div class="form-group">
-          <label><i class="fas fa-user"></i> Full Name</label>
-          <input type="text" placeholder="eg. Rajesh Khanna" id="fullname" required>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-envelope"></i> Email Address</label>
-          <input type="email" placeholder="hello@example.com" id="emailId" required>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-phone-alt"></i> Phone / WhatsApp</label>
-          <input type="tel" placeholder="+91 99444 55127" id="mobile" required>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-stethoscope"></i> Treatment Interest</label>
-          <select id="serviceSelect">
-            <option>Select Treatment Interest</option>
-            <option>Regenerative Medicine</option>
-            <option>Aesthetic & Laser</option>
-            <option>Cardiac Wellness</option>
-            <option>General Consultation</option>
-            <option>Neurology & Sleep</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-calendar-alt"></i> Preferred Date / Message</label>
-          <textarea rows="2" placeholder="Your preferred date or any specific concern..." id="messageText"></textarea>
-        </div>
-        <button type="submit" class="btn">Secure Appointment <i class="fas fa-calendar-check"></i></button>
-        <p style="font-size:0.7rem; margin-top: 16px; text-align:center;">🔒 HIPAA & GDPR compliant. Priority response within 2 hours.</p>
+      <h3>✨ Request Appointment (WhatsApp Redirect)</h3>
+      <form id="whatsappForm">
+        <div class="form-group"><label><i class="fas fa-user"></i> Full Name</label><input type="text" id="fullName" placeholder="Your Name" required></div>
+        <div class="form-group"><label><i class="fas fa-phone-alt"></i> WhatsApp Number</label><input type="tel" id="phoneNum" placeholder="+91 XXXXXXXXXX" required></div>
+        <div class="form-group"><label><i class="fas fa-calendar-day"></i> Concern / Message</label><textarea rows="2" id="userMsg" placeholder="Age, symptoms or preferred time"></textarea></div>
+        <div class="form-group"><label><i class="fas fa-users"></i> Patient Category</label><select id="patientType"><option>Child (0-12 yrs)</option><option>Teen (13-19)</option><option>Adult Female</option><option>Adult Male</option><option>Senior Citizen</option></select></div>
+        <button type="submit" class="btn"><i class="fab fa-whatsapp"></i> Send & Redirect to WhatsApp</button>
       </form>
     </div>
   </div>
@@ -728,61 +601,65 @@
 
 <footer>
   <div class="container">
-    <div class="social-links" style="margin-bottom: 20px;">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
-    <p>© 2025 Dr. Satish Clinic — Where Science Meets Elegance. All rights reserved.</p>
-    <p style="font-size:0.8rem; margin-top: 8px;">📍 Kattankulathur, Chengalpattu | Open daily 6:30 AM – 9:00 PM</p>
+    <div class="social-links"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+    <p>© 2025 Dr. Sathish Clinic — உங்கள் ஆரோக்கியம், எங்கள் முன்னுரிமை | Your Health, Our Priority</p>
+    <p>📍 Kattankulathur, Chengalpattu | Open Daily 6:30 AM – 9:00 PM</p>
   </div>
 </footer>
-<a href="https://wa.me/919944455127" class="floating-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<div class="floating-whatsapp" id="floatWhatsApp"><i class="fab fa-whatsapp"></i></div>
+<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({ duration: 800, once: true, offset: 80 });
-  
-  // Mobile menu toggle
+  AOS.init({ duration: 800, once: true });
+  // Mobile menu
   const mobileBtn = document.getElementById('mobileMenuBtn');
   const navLinksDiv = document.getElementById('navLinks');
   mobileBtn.addEventListener('click', () => navLinksDiv.classList.toggle('active'));
   document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinksDiv.classList.remove('active')));
 
-  // Sticky navbar
-  window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if(window.scrollY > 30) navbar.style.background = 'rgba(253, 252, 248, 0.98)';
-    else navbar.style.background = 'rgba(253, 252, 248, 0.92)';
-  });
-
-  // Enhanced form handler
-  const contactForm = document.getElementById('advancedForm');
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('fullname').value.trim();
-    if(name) {
-      alert(`✨ Dear ${name}, your exclusive consultation request is received. Our premium care team will reach out within 2 hours. ✨`);
-      contactForm.reset();
-    } else {
-      alert('Please provide your name to schedule a VIP appointment.');
+  // Dynamic Blinking for Today (Friday detection)
+  const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const today = new Date().getDay(); // 0 = Sunday, 5 = Friday
+  const todayName = days[today];
+  const dayElements = {
+    monday: 'mon', tuesday: 'tue', wednesday: 'wed', thursday: 'thu', friday: 'fri', saturday: 'sat', sunday: 'sun'
+  };
+  const todayId = dayElements[todayName];
+  if(todayId) {
+    const tdElem = document.getElementById(todayId);
+    if(tdElem) {
+      tdElem.innerHTML = '<span class="blink-day"><i class="fas fa-bell"></i> Open Today</span>';
     }
+  }
+  const badgeSpan = document.getElementById('todayBlinkBadge');
+  if(badgeSpan) badgeSpan.innerHTML = `Today: ${todayName.toUpperCase()} 🔴 OPEN`;
+
+  // WhatsApp Form Submit -> redirect with prefilled data
+  const form = document.getElementById('whatsappForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phoneNum').value.trim();
+    const msg = document.getElementById('userMsg').value.trim();
+    const patientCat = document.getElementById('patientType').value;
+    if(!name || !phone) { alert("Please enter name and phone number"); return; }
+    let finalMsg = `Hello Dr. Sathish Clinic, Appointment Request.%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Category:* ${encodeURIComponent(patientCat)}%0A*Message:* ${encodeURIComponent(msg || 'General consultation')}`;
+    window.open(`https://wa.me/919944455127?text=${finalMsg}`, '_blank');
+    form.reset();
   });
 
-  // Smooth anchor scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if(targetId === "#" || targetId === "") return;
-      const target = document.querySelector(targetId);
-      if(target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if(navLinksDiv.classList.contains('active')) navLinksDiv.classList.remove('active');
-      }
-    });
+  // Back to Top Button logic
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 400) backBtn.classList.add('show');
+    else backBtn.classList.remove('show');
+    const navbar = document.getElementById('navbar');
+    navbar.style.background = window.scrollY > 30 ? 'rgba(253, 252, 248, 0.98)' : 'rgba(253, 252, 248, 0.96)';
   });
+  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  document.getElementById('floatWhatsApp').addEventListener('click', () => window.open('https://wa.me/919944455127', '_blank'));
 </script>
 </body>
 </html>
