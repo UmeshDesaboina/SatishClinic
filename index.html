@@ -1,788 +1,663 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Dr. Satish Clinic | Advanced Medicine & Aesthetics</title>
-  <!-- Google Fonts + Font Awesome 6 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- AOS Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #FDFCF8;
-      color: #1A2C2E;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    :root {
-      --primary-deep: #0A2F32;
-      --primary-slate: #1C4B4F;
-      --accent-gold: #CBA258;
-      --accent-gold-light: #F5E6D3;
-      --bg-warm: #FEFAF5;
-      --bg-card: #FFFFFF;
-      --text-dark: #1A2C2E;
-      --text-soft: #4A5B5E;
-      --border-soft: #E9E2D4;
-      --shadow-premium: 0 30px 50px -20px rgba(0, 0, 0, 0.12), 0 10px 20px -8px rgba(0, 0, 0, 0.05);
-      --shadow-hover: 0 40px 60px -25px rgba(10, 47, 50, 0.2);
-      --transition-smooth: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1.05);
-    }
-
-    @keyframes shimmerMove {
-      0% { background-position: -150% 0; }
-      100% { background-position: 150% 0; }
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(203, 162, 88, 0.2);
-    }
-
-    .container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 0 36px;
-    }
-
-    section {
-      padding: 100px 0;
-      position: relative;
-    }
-
-    h1, h2, h3 {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: var(--primary-deep);
-    }
-
-    .section-subhead {
-      font-size: 1.2rem;
-      color: var(--text-soft);
-      max-width: 700px;
-      margin-bottom: 3.5rem;
-      border-left: 5px solid var(--accent-gold);
-      padding-left: 1.6rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--primary-deep);
-      color: white;
-      padding: 14px 34px;
-      border-radius: 60px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition-smooth);
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: 0 8px 18px rgba(10, 47, 50, 0.2);
-    }
-
-    .btn i {
-      transition: transform 0.2s;
-    }
-
-    .btn:hover {
-      background: var(--primary-slate);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 28px -10px rgba(10, 47, 50, 0.4);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--primary-deep);
-      color: var(--primary-deep);
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      background: var(--primary-deep);
-      color: white;
-    }
-
-    /* navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(253, 252, 248, 0.92);
-      backdrop-filter: blur(16px);
-      z-index: 1000;
-      transition: 0.3s;
-      border-bottom: 1px solid rgba(203, 162, 88, 0.2);
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 36px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .logo h3 {
-      font-size: 1.9rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #0A2F32 0%, #1C4B4F 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .logo span {
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      color: var(--accent-gold);
-      font-weight: 500;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.8rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      transition: 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-gold);
-    }
-
-    .mobile-menu {
-      display: none;
-      font-size: 1.9rem;
-      cursor: pointer;
-      color: var(--primary-deep);
-    }
-
-    /* hero */
-    .hero {
-      padding-top: 160px;
-      padding-bottom: 80px;
-      background: radial-gradient(ellipse at 80% 30%, #FFF8EF, #FDFAF2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-content {
-      flex: 1.2;
-    }
-
-    .badge-premium {
-      background: var(--accent-gold-light);
-      color: #8B6B3D;
-      padding: 6px 20px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      display: inline-block;
-      margin-bottom: 24px;
-    }
-
-    .hero-content h1 {
-      font-size: 3.8rem;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: var(--primary-deep);
-    }
-
-    .highlight {
-      color: var(--accent-gold);
-      border-bottom: 3px dotted var(--accent-gold);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      margin-top: 40px;
-    }
-
-    .stat-item h4 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary-deep);
-    }
-
-    /* doctor card */
-    .doctor-card {
-      flex: 0.9;
-      background: white;
-      border-radius: 48px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: var(--shadow-premium);
-      transition: var(--transition-smooth);
-      border: 1px solid rgba(203, 162, 88, 0.4);
-    }
-
-    .doctor-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .doctor-img-placeholder {
-      width: 220px;
-      height: 220px;
-      background: linear-gradient(145deg, #E8E0D0, #D6CDBB);
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
-    }
-
-    .doctor-img-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .doctor-card h3 {
-      font-size: 1.7rem;
-      margin-top: 12px;
-    }
-
-    .doctor-title {
-      color: var(--accent-gold);
-      font-weight: 600;
-    }
-
-    /* services */
-    .services {
-      background: #FFFFFF;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      background: var(--bg-card);
-      border-radius: 36px;
-      padding: 2rem;
-      transition: var(--transition-smooth);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.04);
-    }
-
-    .service-card:hover {
-      transform: translateY(-12px);
-      border-color: var(--accent-gold);
-      box-shadow: var(--shadow-premium);
-    }
-
-    .service-icon {
-      background: var(--primary-deep);
-      width: 80px;
-      height: 80px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.8rem;
-      color: white;
-      font-size: 2.2rem;
-      transition: 0.3s;
-    }
-
-    /* awards bar */
-    .awards-bar {
-      background: var(--bg-warm);
-      border-radius: 60px;
-      padding: 2rem;
-      margin: 3rem 0;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .award-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-    }
-
-    .award-item i {
-      font-size: 2rem;
-      color: var(--accent-gold);
-    }
-
-    /* about */
-    .about-flex {
-      display: flex;
-      gap: 4rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .about-text {
-      flex: 1.3;
-    }
-
-    .signature {
-      font-size: 1.1rem;
-      font-style: italic;
-      margin-top: 25px;
-      color: var(--accent-gold);
-      border-top: 2px solid #E9E2D4;
-      padding-top: 20px;
-    }
-
-    .experience-highlight {
-      background: var(--primary-deep);
-      border-radius: 32px;
-      padding: 2rem;
-      color: white;
-      flex: 0.9;
-    }
-
-    /* contact form - ENHANCED STYLING */
-    .contact-form {
-      background: white;
-      border-radius: 48px;
-      padding: 2rem;
-      box-shadow: var(--shadow-premium);
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(203, 162, 88, 0.2);
-    }
-    .contact-form:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-hover);
-    }
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .form-group input, 
-    .form-group select, 
-    .form-group textarea {
-      width: 100%;
-      padding: 14px 22px;
-      border: 1.5px solid #E9E2D4;
-      border-radius: 60px;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      background: #FFFFFF;
-      transition: all 0.25s ease;
-      outline: none;
-      color: var(--text-dark);
-    }
-    .form-group textarea {
-      border-radius: 32px;
-      resize: vertical;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 0 4px rgba(203, 162, 88, 0.2);
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: var(--primary-deep);
-      padding-left: 10px;
-    }
-    .contact-form button {
-      width: 100%;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    /* virtual badge */
-    .virtual-badge {
-      background: rgba(203, 162, 88, 0.15);
-      border-radius: 100px;
-      padding: 8px 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* testimonials */
-    .testimonial-grid {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .test-card {
-      background: white;
-      border-radius: 32px;
-      padding: 2rem;
-      max-width: 350px;
-      transition: all 0.3s;
-      box-shadow: var(--shadow-premium);
-    }
-
-    /* contact & map */
-    .contact-wrap {
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .contact-info {
-      flex: 1;
-    }
-    .map-preview {
-      background: #E2D9CE;
-      border-radius: 32px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-      overflow: hidden;
-      border: 1px solid var(--accent-gold-light);
-    }
-    .map-preview iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .opening-hours {
-      background: var(--bg-warm);
-      border-radius: 32px;
-      padding: 1.4rem;
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: space-between;
-    }
-    .hours-item {
-      font-weight: 500;
-    }
-
-    footer {
-      background: #082426;
-      color: #C6D6D8;
-      padding: 40px 0;
-      text-align: center;
-    }
-    .social-links a {
-      color: #C6D6D8;
-      margin: 0 12px;
-      font-size: 1.4rem;
-      transition: 0.2s;
-      display: inline-block;
-    }
-    .social-links a:hover {
-      color: var(--accent-gold);
-    }
-
-    @media (max-width: 950px) {
-      .nav-links {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        flex-direction: column;
-        background: white;
-        width: 80%;
-        height: 100vh;
-        padding: 2rem;
-        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
-        transition: 0.3s;
-      }
-      .nav-links.active {
-        left: 0;
-      }
-      .mobile-menu {
-        display: block;
-      }
-      .hero-content h1 {
-        font-size: 2.6rem;
-      }
-      h2 {
-        font-size: 2.2rem;
-      }
-      .container {
-        padding: 0 20px;
-      }
-    }
-
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      background: #25D366;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      z-index: 99;
-      transition: 0.2s;
-      color: white;
-    }
-    .floating-whatsapp:hover {
-      transform: scale(1.08);
-      background: #20b85f;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DR. Sathish Clinic | General Physician | Potheri, Kattankulathur</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1f3a;--navy2:#112a4e;--teal:#0e7490;--teal2:#06b6d4;--gold:#d4a017;--gold2:#f5c842;--cream:#faf7f2;--white:#fff;--text:#1e293b;--muted:#64748b;--light:#e2eaf4;--green:#22c55e;--red:#ef4444}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--teal2);border-radius:3px}
+*{cursor:none!important}
+.cur{position:fixed;width:13px;height:13px;background:var(--teal2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:exclusion;transition:width .2s,height .2s}
+.cur-r{position:fixed;width:34px;height:34px;border:1.5px solid rgba(6,182,212,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .14s ease-out,width .2s,height .2s}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1rem 5vw;display:flex;align-items:center;justify-content:space-between;background:rgba(11,31,58,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(6,182,212,.15);transition:padding .3s}
+.nav-brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.nav-em{width:42px;height:42px;background:linear-gradient(135deg,var(--teal),var(--teal2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 4px 16px rgba(6,182,212,.3)}
+.nav-nm{font-family:'Playfair Display',serif;color:#fff;font-size:1.05rem;line-height:1.2}
+.nav-nm span{display:block;font-size:.62rem;color:var(--teal2);font-family:'Lato',sans-serif;letter-spacing:.15em;text-transform:uppercase;font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;transition:color .2s}
+.nav-links a:hover{color:var(--teal2)}
+.nav-wa{background:#25D366;color:#fff!important;padding:.45rem 1.1rem;border-radius:50px;display:flex;align-items:center;gap:.35rem;font-size:.78rem!important;transition:transform .2s,box-shadow .2s!important}
+.nav-wa:hover{transform:translateY(-2px)!important;box-shadow:0 6px 20px rgba(37,211,102,.4)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.mob-nav{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--navy);z-index:600;border-left:1px solid rgba(6,182,212,.15);padding:5rem 2rem 2rem;transition:right .3s ease;display:none}
+.mob-nav.open{right:0}
+.mob-nav a{display:block;color:rgba(255,255,255,.8);text-decoration:none;font-size:1.05rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.mob-nav .cls{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:1.5rem}
+.ovl{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:599;display:none}
+.ovl.show{display:block}
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,#0d2847 40%,#0a3d5c 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px}
+.hero-mesh{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 80% 50%,rgba(14,116,144,.25) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(212,160,23,.12) 0%,transparent 60%)}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(6,182,212,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(6,182,212,.04) 1px,transparent 1px);background-size:60px 60px;animation:gridMv 20s linear infinite}
+@keyframes gridMv{from{background-position:0 0}to{background-position:60px 60px}}
+.ptcls{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.ptcl{position:absolute;border-radius:50%;background:rgba(6,182,212,.35);animation:fltUp linear infinite}
+@keyframes fltUp{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:.4}100%{transform:translateY(-10vh) scale(1.5);opacity:0}}
+.hero-in{max-width:1280px;margin:0 auto;padding:4rem 5vw;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.h-tag{display:inline-flex;align-items:center;gap:.6rem;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.3);color:var(--teal2);padding:.4rem 1rem;border-radius:50px;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fuUp .6s ease forwards .2s}
+.h-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4.5vw,4rem);font-weight:700;color:#fff;line-height:1.12;margin-bottom:.5rem;opacity:0;animation:fuUp .7s ease forwards .4s}
+.h-title .ac{color:var(--teal2);font-style:italic}
+.h-title .gl{color:var(--gold2)}
+.h-tamil{font-family:'Noto Sans Tamil',sans-serif;font-size:1rem;color:rgba(245,200,66,.85);margin:1rem 0 .25rem;opacity:0;animation:fuUp .7s ease forwards .55s}
+.h-tamil-en{font-size:.78rem;color:rgba(255,255,255,.42);font-style:italic;margin-bottom:1.4rem;opacity:0;animation:fuUp .7s ease forwards .65s}
+.h-desc{color:rgba(255,255,255,.62);font-size:.95rem;line-height:1.75;max-width:490px;opacity:0;animation:fuUp .7s ease forwards .75s;margin-bottom:1.8rem}
+.h-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.2rem;opacity:0;animation:fuUp .7s ease forwards .85s}
+.pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);padding:.3rem .8rem;border-radius:50px;font-size:.75rem;display:flex;align-items:center;gap:.3rem}
+.h-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fuUp .7s ease forwards .95s}
+.btn-p{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff;padding:.82rem 1.7rem;border-radius:7px;font-weight:700;font-size:.88rem;text-decoration:none;border:none;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(14,116,144,.4);transition:transform .2s,box-shadow .2s}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(6,182,212,.45)}
+.btn-w{background:#25D366;color:#fff;padding:.82rem 1.7rem;border-radius:7px;font-weight:700;font-size:.88rem;text-decoration:none;border:none;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(37,211,102,.3);transition:transform .2s,box-shadow .2s}
+.btn-w:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.45)}
+.h-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin-top:2.5rem;opacity:0;animation:fuUp .7s ease forwards 1.1s}
+.stat-it{background:rgba(11,31,58,.65);padding:1.1rem .8rem;text-align:center;transition:background .2s}
+.stat-it:hover{background:rgba(14,116,144,.2)}
+.stat-n{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--teal2);font-weight:700;line-height:1}
+.stat-l{font-size:.68rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-top:.25rem}
+.doc-card{background:rgba(255,255,255,.04);border:1px solid rgba(6,182,212,.2);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px);opacity:0;animation:fdIn 1s ease forwards .8s;position:relative}
+.doc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--teal2),var(--gold))}
+.doc-ph{position:relative;padding:2rem 2rem 0;display:flex;flex-direction:column;align-items:center}
+.doc-av{width:175px;height:175px;border-radius:50%;border:4px solid rgba(6,182,212,.4);box-shadow:0 0 0 8px rgba(6,182,212,.07),0 20px 50px rgba(0,0,0,.3);background:linear-gradient(160deg,#1a4a6e 0%,#0e3254 100%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.doc-av svg{width:100%;height:100%}
+.doc-bdg{position:absolute;bottom:0;right:1.5rem;background:var(--green);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.08em;padding:.28rem .65rem;border-radius:50px;display:flex;align-items:center;gap:.3rem;box-shadow:0 4px 12px rgba(34,197,94,.4)}
+.pdot{width:6px;height:6px;background:#fff;border-radius:50%;animation:pa 1.5s infinite}
+@keyframes pa{0%,100%{opacity:1}50%{opacity:.3}}
+.doc-inf{padding:1.4rem 1.8rem 1.8rem;text-align:center}
+.doc-nm{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+.doc-ttl{color:var(--teal2);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem}
+.doc-ql{color:rgba(255,255,255,.5);font-size:.78rem;margin-bottom:1.1rem}
+.doc-tags{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-bottom:1.1rem}
+.doc-tg{background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.22);color:var(--teal2);padding:.22rem .6rem;border-radius:50px;font-size:.7rem}
+.doc-div{height:1px;background:rgba(255,255,255,.08);margin:.9rem 0}
+.doc-hr{display:flex;align-items:center;justify-content:center;gap:.5rem}
+.doc-hrt{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.5}
+.doc-hrt strong{color:#fff}
+.qbanner{background:linear-gradient(135deg,var(--navy2),var(--navy));border-top:1px solid rgba(6,182,212,.1);border-bottom:1px solid rgba(6,182,212,.1);padding:2.5rem 5vw;text-align:center;position:relative;overflow:hidden}
+.qbanner::before{content:'"';position:absolute;top:-20px;left:5%;font-size:14rem;color:rgba(6,182,212,.04);font-family:'Playfair Display',serif;line-height:1;pointer-events:none}
+.qb-t{font-family:'Noto Sans Tamil',sans-serif;font-size:1.35rem;color:var(--gold2);margin-bottom:.4rem;font-weight:600}
+.qb-s{font-size:.75rem;color:rgba(255,255,255,.32);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem}
+.qb-e{font-size:.88rem;color:rgba(255,255,255,.52);font-style:italic}
+.sec{padding:5.5rem 5vw}
+.sec-in{max-width:1280px;margin:0 auto}
+.sec-ey{font-size:.67rem;letter-spacing:.25em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem}
+.sec-ey::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--teal),transparent);max-width:80px}
+.sec-h2{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,3vw,2.7rem);font-weight:700;color:var(--navy);line-height:1.2}
+.sec-h2 em{font-style:italic;color:var(--teal)}
+.sec-sub{color:var(--muted);font-size:.93rem;line-height:1.7;max-width:510px;margin-top:.75rem}
+.dk .sec-h2{color:#fff}
+.dk .sec-sub{color:rgba(255,255,255,.52)}
+.dk .sec-ey{color:var(--teal2)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+.svc-c{background:#fff;border:1px solid rgba(14,116,144,.1);border-radius:14px;padding:1.8rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.svc-c::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal2));transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.svc-c:hover{transform:translateY(-5px);box-shadow:0 22px 55px rgba(14,116,144,.11)}
+.svc-c:hover::after{transform:scaleX(1)}
+.svc-ic{width:52px;height:52px;border-radius:12px;margin-bottom:1.1rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.svc-ic.t{background:rgba(14,116,144,.1)}
+.svc-ic.g{background:rgba(212,160,23,.1)}
+.svc-ic.gr{background:rgba(34,197,94,.1)}
+.svc-nm{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.45rem}
+.svc-ds{font-size:.83rem;color:var(--muted);line-height:1.65}
+.svc-fo{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.9rem}
+.fo-b{background:var(--light);color:var(--teal);font-size:.67rem;padding:.18rem .55rem;border-radius:50px;font-weight:700}
+.qmid{background:var(--cream);padding:3.5rem 5vw;border-top:1px solid rgba(14,116,144,.07);border-bottom:1px solid rgba(14,116,144,.07)}
+.qmid-in{max-width:680px;margin:0 auto;text-align:center}
+.qm-t{font-family:'Noto Sans Tamil',sans-serif;font-size:1.45rem;color:var(--navy);font-weight:600;margin-bottom:.45rem;line-height:1.6}
+.qm-e{font-style:italic;font-size:.93rem;color:var(--muted)}
+.qm-s{margin-top:.7rem;font-size:.7rem;color:var(--teal);letter-spacing:.12em;text-transform:uppercase}
+.why-s{background:linear-gradient(160deg,var(--navy) 0%,#0c2340 100%);position:relative;overflow:hidden}
+.why-s::before{content:'';position:absolute;top:-250px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(14,116,144,.2) 0%,transparent 70%);pointer-events:none}
+.why-2c{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.why-g{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.why-c{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.4rem;transition:background .3s,border-color .3s,transform .3s}
+.why-c:hover{background:rgba(14,116,144,.15);border-color:rgba(6,182,212,.25);transform:translateX(4px)}
+.why-ci{font-size:1.4rem;margin-bottom:.65rem}
+.why-ct{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:.35rem}
+.why-cx{font-size:.8rem;color:rgba(255,255,255,.47);line-height:1.6}
+.hrs-map{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.hrs-c{background:#fff;border-radius:16px;padding:1.8rem;box-shadow:0 10px 40px rgba(14,116,144,.07);border:1px solid rgba(14,116,144,.1)}
+.hrs-ttl{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:1.4rem;display:flex;align-items:center;gap:.5rem}
+.hrs-row{display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px dashed rgba(14,116,144,.1)}
+.hrs-row:last-child{border:none}
+.hrs-d{font-size:.87rem;color:var(--text)}
+.hrs-t{font-size:.8rem;color:var(--teal);font-weight:700}
+.hrs-row.today .hrs-d{color:var(--teal);font-weight:700}
+.hrs-row.today .hrs-t{color:var(--gold)}
+.hrs-row.cls .hrs-t{color:var(--red)}
+.tdot{width:7px;height:7px;background:var(--green);border-radius:50%;display:inline-block;margin-right:.4rem;animation:pa 1.5s infinite}
+.map-w{border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(14,116,144,.12);border:1px solid rgba(14,116,144,.15)}
+.map-w iframe{width:100%;height:280px;display:block;border:none;filter:saturate(.9)}
+.map-ft{background:var(--navy);padding:1rem 1.4rem;color:rgba(255,255,255,.7);font-size:.8rem;line-height:1.5;display:flex;gap:.7rem;align-items:flex-start}
+.map-ft strong{color:#fff}
+.wa-dir{display:flex;align-items:center;gap:.5rem;margin-top:1rem;background:#25D366;color:#fff;padding:.7rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.85rem;box-shadow:0 4px 16px rgba(37,211,102,.28);transition:transform .2s,box-shadow .2s;width:fit-content}
+.wa-dir:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4)}
+.cntct-s{background:linear-gradient(160deg,var(--navy) 0%,#082030 100%);position:relative;overflow:hidden}
+.cntct-s::after{content:'';position:absolute;bottom:-200px;left:-200px;width:550px;height:550px;background:radial-gradient(circle,rgba(212,160,23,.09) 0%,transparent 70%);pointer-events:none}
+.cntct-2c{display:grid;grid-template-columns:1fr 1.15fr;gap:5rem;align-items:start;position:relative;z-index:2}
+.ci-row{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1.4rem}
+.ci-ic{width:42px;height:42px;border-radius:10px;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.22);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ci-lb{font-size:.68rem;color:var(--teal2);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.2rem}
+.ci-vl{color:rgba(255,255,255,.78);font-size:.87rem;line-height:1.5}
+.ci-vl strong{color:#fff}
+.tsq{margin-top:2.2rem;padding:1.4rem;background:rgba(212,160,23,.07);border-left:3px solid var(--gold);border-radius:0 8px 8px 0}
+.tsq-t{font-family:'Noto Sans Tamil',sans-serif;font-size:.95rem;color:var(--gold2);margin-bottom:.3rem}
+.tsq-e{font-size:.78rem;color:rgba(255,255,255,.42);font-style:italic}
+.tsq-s{font-size:.66rem;color:rgba(255,255,255,.28);margin-top:.35rem;letter-spacing:.1em}
+.f-card{background:rgba(255,255,255,.04);border:1px solid rgba(6,182,212,.14);border-radius:20px;padding:2.2rem;backdrop-filter:blur(10px)}
+.f-ttl{font-family:'Playfair Display',serif;font-size:1.35rem;color:#fff;margin-bottom:.35rem}
+.f-sub{font-size:.8rem;color:rgba(255,255,255,.42);margin-bottom:1.8rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1.1rem}
+.flb{display:block;font-size:.72rem;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.45rem}
+.fi,.fs,.fta{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.75rem .9rem;color:#fff;font-size:.88rem;font-family:'Lato',sans-serif;transition:border-color .2s,background .2s;outline:none}
+.fi::placeholder,.fta::placeholder{color:rgba(255,255,255,.28)}
+.fi:focus,.fs:focus,.fta:focus{border-color:var(--teal2);background:rgba(6,182,212,.07)}
+.fs option{background:var(--navy2);color:#fff}
+.fta{resize:vertical;min-height:85px}
+.f-submit{width:100%;padding:.95rem;background:#25D366;color:#fff;border:none;border-radius:10px;font-size:.97rem;font-weight:700;font-family:'Lato',sans-serif;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 6px 20px rgba(37,211,102,.28);transition:transform .2s,box-shadow .2s;margin-top:.4rem}
+.f-submit:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.4)}
+.f-note{font-size:.7rem;color:rgba(255,255,255,.32);text-align:center;margin-top:.65rem}
+.tsti-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+.tsti-c{background:#fff;border-radius:14px;padding:1.7rem;border:1px solid rgba(14,116,144,.08);box-shadow:0 4px 20px rgba(14,116,144,.05);transition:transform .3s,box-shadow .3s}
+.tsti-c:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,116,144,.1)}
+.tsti-st{color:var(--gold);font-size:.88rem;margin-bottom:.75rem}
+.tsti-tx{font-size:.86rem;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:1.1rem}
+.tsti-au{display:flex;align-items:center;gap:.7rem}
+.tsti-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.82rem;font-family:'Noto Sans Tamil',sans-serif}
+.tsti-nm{font-size:.83rem;font-weight:700;color:var(--navy)}
+.tsti-lc{font-size:.72rem;color:var(--muted)}
+.cta-s{background:linear-gradient(135deg,var(--teal) 0%,#065f75 100%);padding:4.5rem 5vw;text-align:center;position:relative;overflow:hidden}
+.cta-s::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='1' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") repeat}
+.cta-ta{font-family:'Noto Sans Tamil',sans-serif;font-size:1rem;color:rgba(255,255,255,.68);margin-bottom:.3rem;position:relative}
+.cta-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.7rem);color:#fff;margin-bottom:.9rem;position:relative}
+.cta-sub{color:rgba(255,255,255,.68);max-width:500px;margin:0 auto 2rem;font-size:.93rem;line-height:1.65;position:relative}
+.cta-bts{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-wh{background:#fff;color:var(--teal);padding:.82rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s}
+.btn-wh:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.15)}
+.btn-ow{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.48);padding:.82rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;gap:.5rem;transition:background .2s,border-color .2s}
+.btn-ow:hover{background:rgba(255,255,255,.1);border-color:#fff}
+footer{background:var(--navy);padding:3rem 5vw 1.8rem;border-top:1px solid rgba(6,182,212,.1)}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem}
+.ft-ab .fl{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--teal2);margin-bottom:.7rem}
+.ft-ab p{font-size:.8rem;color:rgba(255,255,255,.42);line-height:1.7;max-width:270px}
+.ft-ab .ft{font-family:'Noto Sans Tamil',sans-serif;font-size:.85rem;color:rgba(245,200,66,.55);margin-top:.75rem}
+.ft-cl h4{color:rgba(255,255,255,.65);font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:.9rem}
+.ft-cl a{display:block;color:rgba(255,255,255,.38);text-decoration:none;font-size:.8rem;margin-bottom:.5rem;transition:color .2s}
+.ft-cl a:hover{color:var(--teal2)}
+.ft-bt{border-top:1px solid rgba(255,255,255,.06);padding-top:1.4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft-cp{font-size:.75rem;color:rgba(255,255,255,.28)}
+.ft-wa{display:flex;align-items:center;gap:.4rem;color:#25D366!important;font-size:.75rem;text-decoration:none}
+.fl-g{position:fixed;bottom:1.8rem;right:1.8rem;display:flex;flex-direction:column;gap:.7rem;z-index:400}
+.fl-b{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s;animation:popI .5s cubic-bezier(.34,1.56,.64,1) both;opacity:0}
+.fl-b:hover{transform:scale(1.12)}
+.fl-wa{background:#25D366;animation-delay:1.2s}
+.fl-ph{background:linear-gradient(135deg,var(--teal),var(--teal2));animation-delay:1.4s}
+@keyframes popI{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+@keyframes fuUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fdIn{from{opacity:0}to{opacity:1}}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.rv.vis{opacity:1;transform:none}
+.rvl{opacity:0;transform:translateX(-26px);transition:opacity .75s ease,transform .75s ease}
+.rvl.vis{opacity:1;transform:none}
+.rvr{opacity:0;transform:translateX(26px);transition:opacity .75s ease,transform .75s ease}
+.rvr.vis{opacity:1;transform:none}
+@media(max-width:960px){.hero-in{grid-template-columns:1fr}.doc-card{max-width:400px;margin:0 auto}.svc-grid{grid-template-columns:1fr 1fr}.why-2c{grid-template-columns:1fr;gap:2rem}.why-g{grid-template-columns:1fr}.hrs-map{grid-template-columns:1fr}.cntct-2c{grid-template-columns:1fr}.tsti-g{grid-template-columns:1fr}.ft-g{grid-template-columns:1fr 1fr}.nav-links{display:none}.hamburger{display:flex}.mob-nav{display:block}}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr}.f-row{grid-template-columns:1fr}.h-stats{grid-template-columns:repeat(3,1fr)}.ft-g{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
-<div class="navbar" id="navbar">
-  <div class="nav-container">
-    <div class="logo">
-      <h3>Dr. Satish Clinic</h3>
-      <span>PREMIUM HEALTH & AESTHETICS</span>
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
+<div class="ovl" id="ovl" onclick="closeNav()"></div>
+<div class="mob-nav" id="mobNav">
+  <button class="cls" onclick="closeNav()">✕</button>
+  <a href="#services" onclick="closeNav()">Services</a>
+  <a href="#about" onclick="closeNav()">About Doctor</a>
+  <a href="#hours" onclick="closeNav()">Hours & Location</a>
+  <a href="#contact" onclick="closeNav()">Appointment</a>
+  <a href="https://wa.me/919876543210" style="color:#25D366;margin-top:1rem;" target="_blank">💬 WhatsApp Us</a>
+</div>
+
+<div class="fl-g">
+  <a href="https://wa.me/919876543210" class="fl-b fl-wa" target="_blank" title="WhatsApp">💬</a>
+  <a href="tel:+919876543210" class="fl-b fl-ph" title="Call">📞</a>
+</div>
+
+<nav id="nb">
+  <a href="#" class="nav-brand">
+    <div class="nav-em">⚕️</div>
+    <div class="nav-nm">Dr. Sathish Clinic<span>General Physician · Potheri</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">Doctor</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://wa.me/919876543210" class="nav-wa" target="_blank">💬 WhatsApp</a></li>
+  </ul>
+  <button class="hamburger" onclick="openNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="ptcls" id="ptcls"></div>
+  <div class="hero-in">
+    <div>
+      <div class="h-tag">🏥 Trusted General Physician · Potheri, Kattankulathur</div>
+      <h1 class="h-title">Quality Care for<br><span class="ac">Every Family,</span><br><span class="gl">Every Age</span></h1>
+      <p class="h-tamil">உடல் நலமே உண்மையான செல்வம்</p>
+      <p class="h-tamil-en">"Good health is the real wealth" — Tamil Proverb</p>
+      <p class="h-desc">DR. Sathish Clinic offers compassionate, expert medical care for children, adults, and women. Walk-ins welcome — located at Thiruvalluvar Street, Potheri.</p>
+      <div class="h-pills">
+        <span class="pill">👶 Kids</span>
+        <span class="pill">👨 Adults</span>
+        <span class="pill">👩 Women</span>
+        <span class="pill">💊 All Illnesses</span>
+        <span class="pill">🚶 Walk-ins Welcome</span>
+      </div>
+      <div class="h-btns">
+        <a href="#contact" class="btn-p">📋 Book Appointment</a>
+        <a href="https://wa.me/919876543210?text=Hello%20Dr.%20Sathish%20Clinic%2C%20I%20need%20an%20appointment." class="btn-w" target="_blank">💬 WhatsApp Now</a>
+      </div>
+      <div class="h-stats">
+        <div class="stat-it"><div class="stat-n">15+</div><div class="stat-l">Yrs Exp.</div></div>
+        <div class="stat-it"><div class="stat-n">10K+</div><div class="stat-l">Patients</div></div>
+        <div class="stat-it"><div class="stat-n">6</div><div class="stat-l">Days/Week</div></div>
+      </div>
     </div>
-    <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">Doctor</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contact">Contact</a>
+
+    <!-- DOCTOR CARD -->
+    <div class="doc-card" id="about">
+      <div class="doc-ph">
+        <div class="doc-av">
+          <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8a882"/><stop offset="100%" stop-color="#b08060"/></linearGradient>
+              <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a4a6e"/><stop offset="100%" stop-color="#0e3254"/></linearGradient>
+              <clipPath id="cc"><circle cx="90" cy="90" r="90"/></clipPath>
+            </defs>
+            <rect width="180" height="180" fill="url(#bg)"/>
+            <g opacity="0.05">
+              <line x1="0" y1="36" x2="180" y2="36" stroke="white" stroke-width="0.7"/>
+              <line x1="0" y1="72" x2="180" y2="72" stroke="white" stroke-width="0.7"/>
+              <line x1="0" y1="108" x2="180" y2="108" stroke="white" stroke-width="0.7"/>
+              <line x1="0" y1="144" x2="180" y2="144" stroke="white" stroke-width="0.7"/>
+              <line x1="36" y1="0" x2="36" y2="180" stroke="white" stroke-width="0.7"/>
+              <line x1="72" y1="0" x2="72" y2="180" stroke="white" stroke-width="0.7"/>
+              <line x1="108" y1="0" x2="108" y2="180" stroke="white" stroke-width="0.7"/>
+              <line x1="144" y1="0" x2="144" y2="180" stroke="white" stroke-width="0.7"/>
+            </g>
+            <g clip-path="url(#cc)">
+              <!-- White coat body -->
+              <rect x="15" y="122" width="150" height="100" fill="#eef2f8" rx="3"/>
+              <!-- Coat lapels -->
+              <path d="M90 144 L55 122 L50 222 Z" fill="#dde4f0"/>
+              <path d="M90 144 L125 122 L130 222 Z" fill="#dde4f0"/>
+              <!-- Inner shirt/tie area -->
+              <rect x="78" y="132" width="24" height="58" fill="#1e40af" opacity="0.55" rx="2"/>
+              <!-- Tie -->
+              <polygon points="90,135 86,145 90,175 94,145" fill="#0e7490" opacity="0.9"/>
+              <!-- Stethoscope -->
+              <path d="M72 152 Q62 145 62 132 Q62 126 68 126 Q74 126 74 132" fill="none" stroke="#0e7490" stroke-width="2.8" stroke-linecap="round"/>
+              <path d="M108 152 Q118 145 118 132 Q118 126 112 126 Q106 126 106 132" fill="none" stroke="#0e7490" stroke-width="2.8" stroke-linecap="round"/>
+              <ellipse cx="90" cy="156" rx="12" ry="7" fill="none" stroke="#0e7490" stroke-width="2.8"/>
+              <circle cx="90" cy="156" r="4" fill="#0e7490"/>
+              <line x1="74" y1="152" x2="84" y2="156" stroke="#0e7490" stroke-width="2.5"/>
+              <line x1="106" y1="152" x2="96" y2="156" stroke="#0e7490" stroke-width="2.5"/>
+              <!-- Neck -->
+              <rect x="80" y="108" width="20" height="20" fill="url(#sk)" rx="4"/>
+              <!-- Head -->
+              <ellipse cx="90" cy="85" rx="30" ry="34" fill="url(#sk)"/>
+              <!-- Hair — neat, professional -->
+              <path d="M60 76 Q62 50 90 48 Q118 50 120 76 Q112 58 90 57 Q68 58 60 76Z" fill="#1a0f06"/>
+              <ellipse cx="90" cy="53" rx="28" ry="9" fill="#1a0f06"/>
+              <!-- Side temples -->
+              <path d="M60 76 Q58 82 60 90 Q59 82 62 78Z" fill="#1a0f06"/>
+              <path d="M120 76 Q122 82 120 90 Q121 82 118 78Z" fill="#1a0f06"/>
+              <!-- Ears -->
+              <ellipse cx="60" cy="88" rx="4.5" ry="6.5" fill="#b88060"/>
+              <ellipse cx="120" cy="88" rx="4.5" ry="6.5" fill="#b88060"/>
+              <!-- Glasses frame -->
+              <rect x="68" y="81" width="17" height="12" rx="4" fill="none" stroke="#444" stroke-width="1.8"/>
+              <rect x="95" y="81" width="17" height="12" rx="4" fill="none" stroke="#444" stroke-width="1.8"/>
+              <line x1="85" y1="86" x2="95" y2="86" stroke="#444" stroke-width="1.6"/>
+              <line x1="60" y1="86" x2="68" y2="86" stroke="#444" stroke-width="1.4"/>
+              <line x1="112" y1="86" x2="120" y2="86" stroke="#444" stroke-width="1.4"/>
+              <!-- Eyes -->
+              <ellipse cx="76.5" cy="87" rx="4.5" ry="5" fill="white"/>
+              <ellipse cx="103.5" cy="87" rx="4.5" ry="5" fill="white"/>
+              <circle cx="77" cy="88" r="3" fill="#1a0a00"/>
+              <circle cx="104" cy="88" r="3" fill="#1a0a00"/>
+              <circle cx="78" cy="86.5" r="1" fill="white" opacity="0.85"/>
+              <circle cx="105" cy="86.5" r="1" fill="white" opacity="0.85"/>
+              <!-- Eyebrows -->
+              <path d="M70 80 Q76 77 82 80" stroke="#1a0f06" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M98 80 Q104 77 110 80" stroke="#1a0f06" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <!-- Nose -->
+              <ellipse cx="90" cy="98" rx="4" ry="5" fill="#a07050" opacity="0.4"/>
+              <!-- Smile -->
+              <path d="M82 108 Q90 114 98 108" stroke="#8a5540" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <!-- Mustache optional subtle -->
+              <path d="M84 105 Q90 108 96 105" stroke="#2d1a0e" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="doc-bdg"><div class="pdot"></div> Available Now</div>
+      </div>
+      <div class="doc-inf">
+        <div class="doc-nm">Dr. Sathish</div>
+        <div class="doc-ttl">General Physician</div>
+        <div class="doc-ql">MBBS &nbsp;·&nbsp; AFIH &nbsp;·&nbsp; MBA</div>
+        <div class="doc-tags">
+          <span class="doc-tg">👶 Pediatrics</span>
+          <span class="doc-tg">👨 Adults</span>
+          <span class="doc-tg">👩 Women's Health</span>
+          <span class="doc-tg">🏥 General Medicine</span>
+        </div>
+        <div class="doc-div"></div>
+        <div class="doc-hr">
+          <span style="font-size:1.1rem;">🕘</span>
+          <div class="doc-hrt">
+            <strong>Morning:</strong> 9:00 AM – 1:00 PM<br>
+            <strong>Evening:</strong> 5:00 PM – 9:00 PM<br>
+            <span style="color:rgba(255,255,255,.38);font-size:.73rem;">Mon – Sat &nbsp;|&nbsp; Walk-ins Welcome</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- THIRUKKURAL BANNER -->
+<div class="qbanner rv">
+  <div class="qb-t">மருந்தென வேண்டாவாம் யாக்கைக்கு அருந்தியது அற்றது போற்றி உணின்.</div>
+  <div class="qb-s">— திருக்குறள் 942 / Thirukkural</div>
+  <div class="qb-e">"No medicine is needed for the body, if one eats after ensuring the previous meal is digested."</div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="sec-in">
+    <div class="rv">
+      <div class="sec-ey">What We Treat</div>
+      <h2 class="sec-h2">Medical Services for<br><em>All Ages & All Needs</em></h2>
+      <p class="sec-sub">From newborns to seniors — Dr. Sathish provides expert, caring treatment for every member of your family.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-c rv"><div class="svc-ic t">👶</div><div class="svc-nm">Child Healthcare</div><p class="svc-ds">Vaccinations, fever, growth monitoring, infections & nutrition for infants, toddlers and school children.</p><div class="svc-fo"><span class="fo-b">Kids 0–15 yrs</span></div></div>
+      <div class="svc-c rv"><div class="svc-ic g">👨</div><div class="svc-nm">Adult General Medicine</div><p class="svc-ds">Fevers, infections, body pain, headaches, gastric issues and all common adult health conditions.</p><div class="svc-fo"><span class="fo-b">All Adults</span></div></div>
+      <div class="svc-c rv"><div class="svc-ic gr">👩</div><div class="svc-nm">Women's Health</div><p class="svc-ds">Hormonal concerns, anaemia, thyroid, PCOS support, general check-ups and wellness care for women.</p><div class="svc-fo"><span class="fo-b">Women & Girls</span></div></div>
+      <div class="svc-c rv"><div class="svc-ic t">❤️</div><div class="svc-nm">Chronic Disease Care</div><p class="svc-ds">Diabetes, hypertension, thyroid & asthma management with personalized monitoring plans.</p><div class="svc-fo"><span class="fo-b">Adults</span><span class="fo-b">Seniors</span></div></div>
+      <div class="svc-c rv"><div class="svc-ic g">🩸</div><div class="svc-nm">Diagnostics & Tests</div><p class="svc-ds">Blood tests, urine analysis, sugar & BP checks, and referrals for advanced diagnostics when needed.</p><div class="svc-fo"><span class="fo-b">All Ages</span></div></div>
+      <div class="svc-c rv"><div class="svc-ic gr">💊</div><div class="svc-nm">Prescription & Follow-up</div><p class="svc-ds">Accurate prescriptions, medication guidance, and follow-up care to ensure complete recovery.</p><div class="svc-fo"><span class="fo-b">All Patients</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAMIL QUOTE MID -->
+<div class="qmid rv">
+  <div class="qmid-in">
+    <div style="font-size:1.8rem;margin-bottom:.75rem;opacity:.45;">🌿</div>
+    <div class="qm-t">நோயற்ற வாழ்வே குறைவற்ற செல்வம்</div>
+    <div class="qm-e">"A life free from disease is the greatest wealth one can possess"</div>
+    <div class="qm-s">— Tamil Proverb</div>
   </div>
 </div>
 
-<!-- Hero Section -->
-<section id="home" class="hero">
-  <div class="container hero-grid">
-    <div class="hero-content" data-aos="fade-up">
-      <div class="badge-premium"><i class="fas fa-certificate"></i> Top 1% Clinic Worldwide</div>
-      <h1>Redefining <span class="highlight">Healthcare</span> With Precision & Compassion</h1>
-      <p>Cutting-edge diagnostics, holistic wellness, and regenerative therapies — experience the future of medicine at Dr. Satish Clinic.</p>
-      <div class="virtual-badge"><i class="fas fa-video"></i> Virtual Consult Available | Global Patients</div>
-      <div class="hero-stats">
-        <div class="stat-item"><h4>15+ Years</h4><span>Global Excellence</span></div>
-        <div class="stat-item"><h4>10k+</h4><span>Smiling Patients</span></div>
-        <div class="stat-item"><h4>50+</h4><span>Advanced Tech</span></div>
-      </div>
-      <a href="#contact" class="btn" style="margin-top: 20px;">Book VIP Slot <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <!-- Doctor Photo Card -->
-    <div class="doctor-card" data-aos="fade-left" data-aos-delay="100">
-      <div class="doctor-img-placeholder">
-        <img src="https://placehold.co/400x400/CFC6B8/FFFFFF?text=Dr.+Satish+Photo" alt="Dr. Satish Portrait">
-      </div>
-      <h3>Dr. Satish Mehta</h3>
-      <div class="doctor-title">MD, FACC | Director of Advanced Medicine</div>
-      <p style="margin-top: 10px;"><i class="fas fa-star" style="color:#CBA258;"></i> 30+ International Awards</p>
-    </div>
-  </div>
-</section>
-
-<!-- Awards Bar -->
-<div class="container awards-bar" data-aos="zoom-in">
-  <div class="award-item"><i class="fas fa-trophy"></i> Best Multi-Specialty Clinic 2024</div>
-  <div class="award-item"><i class="fas fa-microscope"></i> Robotic Surgery Excellence</div>
-  <div class="award-item"><i class="fas fa-leaf"></i> Eco-Luxury Healthcare</div>
-  <div class="award-item"><i class="fas fa-hand-holding-heart"></i> Patient-Centric Design</div>
-</div>
-
-<!-- Services -->
-<section id="services" class="services">
-  <div class="container">
-    <h2 data-aos="fade-right">Precision Treatments</h2>
-    <div class="section-subhead" data-aos="fade-right" data-aos-delay="100">Integrative medicine, advanced aesthetics & personalized care plans.</div>
-    <div class="services-grid">
-      <div class="service-card" data-aos="flip-up"><div class="service-icon"><i class="fas fa-heartbeat"></i></div><h3>Cardio-Metabolic Clinic</h3><p>Advanced lipid, hypertension & reversal programs.</p></div>
-      <div class="service-card" data-aos="flip-up" data-aos-delay="50"><div class="service-icon"><i class="fas fa-dna"></i></div><h3>Regenerative Medicine</h3><p>PRP, stem cells & peptide therapies for longevity.</p></div>
-      <div class="service-card" data-aos="flip-up" data-aos-delay="100"><div class="service-icon"><i class="fas fa-spa"></i></div><h3>Aesthetic & Laser</h3><p>Morpheus8, Botox, fillers & skin tightening.</p></div>
-      <div class="service-card" data-aos="flip-up" data-aos-delay="150"><div class="service-icon"><i class="fas fa-brain"></i></div><h3>Neurology & Sleep</h3><p>Advanced migraine & sleep apnea solutions.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- About + Doctor -->
-<section id="about" class="about" style="background: #FEFAF5;">
-  <div class="container about-flex">
-    <div class="about-text" data-aos="fade-right">
-      <h2>Meet Dr. Satish <span style="color: #CBA258;">Mehta</span></h2>
-      <p style="margin: 20px 0; line-height:1.5">A visionary physician with dual fellowships in internal medicine and aesthetic medicine. Dr. Satish has been featured in "Top Doctors of Asia" and pioneers non-invasive techniques. He believes in empathy-driven excellence, combining advanced diagnostics with a holistic approach to restore vitality.</p>
-      <div class="virtual-badge" style="margin-bottom: 12px;"><i class="fas fa-language"></i> Fluent: English, Hindi, French</div>
-      <div class="signature"><i class="fas fa-quote-right"></i> Every patient is unique — we craft bespoke health journeys.</div>
-    </div>
-    <div class="experience-highlight" data-aos="fade-left">
-      <i class="fas fa-user-md" style="font-size: 2rem; color: var(--accent-gold);"></i>
-      <h3 style="color:white; margin: 15px 0;">Clinical Excellence</h3>
-      <p>✔ 15,000+ successful procedures</p>
-      <p>✔ Internationally trained (Harvard, Mayo Clinic)</p>
-      <p>✔ 98% patient satisfaction score</p>
-      <p>✔ Cutting-edge research integrations</p>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section id="testimonials" class="testimonials" style="background: #FFFFFF;">
-  <div class="container">
-    <h2 data-aos="fade-up">Patient Love <span style="color: #CBA258;">& Trust</span></h2>
-    <div class="section-subhead" data-aos="fade-up">Real stories from our premium healthcare journeys.</div>
-    <div class="testimonial-grid">
-      <div class="test-card" data-aos="zoom-in"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Dr. Satish's attention to detail is unmatched. The clinic feels like a 5-star hotel and the medical expertise is world-class."</p><div class="patient-name">— Sneha Reddy</div></div>
-      <div class="test-card" data-aos="zoom-in" data-aos-delay="100"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Thanks to his regenerative treatments, I recovered faster than expected. Highly recommend the aesthetic team."</p><div class="patient-name">— Vikram Sethi</div></div>
-      <div class="test-card" data-aos="zoom-in" data-aos-delay="200"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"The virtual consultation was seamless and the follow-up care extraordinary. True premium experience."</p><div class="patient-name">— Nandini Iyer</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact Section with REAL LOCATION and ENHANCED FORM -->
-<section id="contact" class="contact" style="background: #FDFAF2;">
-  <div class="container contact-wrap">
-    <div class="contact-info" data-aos="fade-right">
-      <h2>Luxury <span style="color: #CBA258;">Care Access</span></h2>
-      <p style="margin: 20px 0;">Visit our flagship clinic — designed for privacy, comfort, and clinical superiority.</p>
-      <p><i class="fas fa-map-pin"></i> <strong>21a, Thiruvalluvar St, Kattankulathur, Near V Care Pharmacy, Potheri, Chengalpattu-603203, Tamil Nadu</strong></p>
-      <p><i class="fas fa-phone-alt"></i> +91 99444 55127  |  +91 98765 43210</p>
-      <p><i class="fas fa-envelope-open-text"></i> drsathishclinic@gmail.com</p>
-      
-      <!-- Opening Hours from Real Data -->
-      <div class="opening-hours">
-        <div class="hours-item"><i class="far fa-clock"></i> Mon-Sat: 6:30 AM – 9:00 PM</div>
-        <div class="hours-item"><i class="fas fa-sun"></i> Sunday: 6:30 AM – 9:00 PM</div>
-        <div class="hours-item"><i class="fas fa-stethoscope"></i> Emergency: Always Available</div>
-      </div>
-      
-      <!-- Google Map Embed using exact location from share link -->
-      <div class="map-preview">
-        <iframe src="https://maps.google.com/maps?q=21a%2C%20Thiruvalluvar%20St%2C%20Kattankulathur%2C%20Chengalpattu%2C%20Tamil%20Nadu%20603203&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-    </div>
-    
-    <!-- Enhanced Contact Form with Premium Styling -->
-    <div class="contact-form" data-aos="fade-left">
-      <h3 style="margin-bottom: 1.2rem; color: var(--primary-deep);">✨ Request a Private Consultation</h3>
-      <form id="advancedForm">
-        <div class="form-group">
-          <label><i class="fas fa-user"></i> Full Name</label>
-          <input type="text" placeholder="eg. Rajesh Khanna" id="fullname" required>
+<!-- WHY US -->
+<section class="sec why-s dk">
+  <div class="sec-in">
+    <div class="why-2c">
+      <div class="rvl">
+        <div class="sec-ey" style="color:var(--teal2);">Why Choose Us</div>
+        <h2 class="sec-h2">Where Every Patient<br><em>Feels Heard</em></h2>
+        <p class="sec-sub" style="color:rgba(255,255,255,.52);">Dr. Sathish brings clinical expertise with genuine warmth — making every consultation thorough, clear, and reassuring.</p>
+        <div style="margin-top:1.8rem;padding:1.3rem;background:rgba(212,160,23,.08);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;">
+          <p style="font-family:'Noto Sans Tamil',sans-serif;color:var(--gold2);font-size:.95rem;margin-bottom:.35rem;">அன்பும் அறனும் உடையார்க்கு</p>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.42);font-style:italic;">"Those who possess love and righteousness shall never fail" — Thirukkural</p>
         </div>
-        <div class="form-group">
-          <label><i class="fas fa-envelope"></i> Email Address</label>
-          <input type="email" placeholder="hello@example.com" id="emailId" required>
+        <a href="#contact" class="btn-p" style="margin-top:1.8rem;display:inline-flex;">Book a Consultation →</a>
+      </div>
+      <div class="why-g rvr">
+        <div class="why-c"><div class="why-ci">🎓</div><div class="why-ct">MBBS · AFIH · MBA</div><p class="why-cx">Triple-qualified with expertise in medicine, occupational health & healthcare management.</p></div>
+        <div class="why-c"><div class="why-ci">⚡</div><div class="why-ct">Quick & Efficient</div><p class="why-cx">Minimal wait, maximum attention. Walk in and be seen by the doctor promptly.</p></div>
+        <div class="why-c"><div class="why-ci">🗣️</div><div class="why-ct">Tamil & English</div><p class="why-cx">Consult in Tamil or English — so you fully understand your own health.</p></div>
+        <div class="why-c"><div class="why-ci">💰</div><div class="why-ct">Affordable Fees</div><p class="why-cx">Fair, transparent consultation fees. Quality healthcare for everyone.</p></div>
+        <div class="why-c"><div class="why-ci">📍</div><div class="why-ct">Easy to Find</div><p class="why-cx">Thiruvalluvar Street, near V Care Pharmacy — heart of Potheri.</p></div>
+        <div class="why-c"><div class="why-ci">🤝</div><div class="why-ct">Family Doctor</div><p class="why-cx">A trusted physician who knows your history and cares about your long-term wellbeing.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & MAP -->
+<section class="sec" id="hours">
+  <div class="sec-in">
+    <div class="rv" style="margin-bottom:3rem;">
+      <div class="sec-ey">Visit Us</div>
+      <h2 class="sec-h2">Clinic Hours &amp; <em>Location</em></h2>
+    </div>
+    <div class="hrs-map">
+      <div class="rvl">
+        <div class="hrs-c">
+          <div class="hrs-ttl">🕐 Visiting Hours</div>
+          <div id="hrsT">
+            <div class="hrs-row" data-day="Monday"><div class="hrs-d">Monday</div><div class="hrs-t">9 AM–1 PM · 5–9 PM</div></div>
+            <div class="hrs-row" data-day="Tuesday"><div class="hrs-d">Tuesday</div><div class="hrs-t">9 AM–1 PM · 5–9 PM</div></div>
+            <div class="hrs-row" data-day="Wednesday"><div class="hrs-d">Wednesday</div><div class="hrs-t">9 AM–1 PM · 5–9 PM</div></div>
+            <div class="hrs-row" data-day="Thursday"><div class="hrs-d">Thursday</div><div class="hrs-t">9 AM–1 PM · 5–9 PM</div></div>
+            <div class="hrs-row" data-day="Friday"><div class="hrs-d">Friday</div><div class="hrs-t">9 AM–1 PM · 5–9 PM</div></div>
+            <div class="hrs-row" data-day="Saturday"><div class="hrs-d">Saturday</div><div class="hrs-t">9 AM–1 PM · 5–9 PM</div></div>
+            <div class="hrs-row cls" data-day="Sunday"><div class="hrs-d">Sunday</div><div class="hrs-t">Closed</div></div>
+          </div>
+          <div style="margin-top:1.4rem;padding:.9rem;background:rgba(14,116,144,.06);border-radius:8px;font-size:.8rem;color:var(--muted);line-height:1.6;">
+            <strong style="color:var(--teal);">🚶 Walk-ins Always Welcome</strong><br>No appointment needed. Come during clinic hours.
+          </div>
         </div>
-        <div class="form-group">
-          <label><i class="fas fa-phone-alt"></i> Phone / WhatsApp</label>
-          <input type="tel" placeholder="+91 99444 55127" id="mobile" required>
+      </div>
+      <div class="rvr">
+        <div class="map-w">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.0!2d80.0488!3d12.8229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52f7b79682c19f%3A0xfdb0688853de2427!2sDR.SathishClinic!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map-ft"><span>📍</span><div><strong>DR. Sathish Clinic</strong><br>21A, Thiruvalluvar Street, near V Care Pharmacy,<br>Potheri, Kattankulathur, Tamil Nadu – 603203</div></div>
         </div>
-        <div class="form-group">
-          <label><i class="fas fa-stethoscope"></i> Treatment Interest</label>
-          <select id="serviceSelect">
-            <option>Select Treatment Interest</option>
-            <option>Regenerative Medicine</option>
-            <option>Aesthetic & Laser</option>
-            <option>Cardiac Wellness</option>
-            <option>General Consultation</option>
-            <option>Neurology & Sleep</option>
+        <a href="https://maps.app.goo.gl/BKXL3kX8WtPLRNDg6" target="_blank" class="wa-dir">🗺️ Open in Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" style="background:var(--cream);padding-top:1rem;">
+  <div class="sec-in">
+    <div class="rv" style="text-align:center;margin-bottom:0;">
+      <div class="sec-ey" style="justify-content:center;">Patient Reviews</div>
+      <h2 class="sec-h2" style="text-align:center;">Trusted by the <em>Community</em></h2>
+    </div>
+    <div class="tsti-g">
+      <div class="tsti-c rv">
+        <div class="tsti-st">★★★★★</div>
+        <p class="tsti-tx">"Dr. Sathish is an exceptional doctor. He listens patiently, explains clearly in Tamil, and prescribes just the right medicine. My whole family trusts him."</p>
+        <div class="tsti-au"><div class="tsti-av">ர</div><div><div class="tsti-nm">Rajeswari M.</div><div class="tsti-lc">Potheri, Kattankulathur</div></div></div>
+      </div>
+      <div class="tsti-c rv">
+        <div class="tsti-st">★★★★★</div>
+        <p class="tsti-tx">"Brought my 2-year-old during a fever. The doctor was calm, reassuring and treated her quickly. நல்ல மருத்துவர் — highly recommended for families!"</p>
+        <div class="tsti-au"><div class="tsti-av">ப</div><div><div class="tsti-nm">Priya Selvam</div><div class="tsti-lc">Guduvanchery</div></div></div>
+      </div>
+      <div class="tsti-c rv">
+        <div class="tsti-st">★★★★★</div>
+        <p class="tsti-tx">"Managing my diabetes for 3 years under Dr. Sathish's care. His guidance on diet and medication has made a huge difference. Very affordable too."</p>
+        <div class="tsti-au"><div class="tsti-av">வ</div><div><div class="tsti-nm">Venkatesh R.</div><div class="tsti-lc">SRM Nagar, Potheri</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM → WHATSAPP -->
+<section class="sec cntct-s" id="contact">
+  <div class="sec-in">
+    <div class="cntct-2c">
+      <div class="rvl">
+        <div class="sec-ey dk" style="color:var(--teal2);">Get In Touch</div>
+        <h2 class="sec-h2 dk">Book Your<br><em>Appointment</em></h2>
+        <p class="sec-sub dk" style="margin-bottom:2rem;">Fill the form and your details will be sent directly via WhatsApp for quick confirmation from the clinic.</p>
+        <div class="ci-row"><div class="ci-ic">📍</div><div><div class="ci-lb">Address</div><div class="ci-vl">21A, Thiruvalluvar Street,<br>near V Care Pharmacy,<br><strong>Potheri, Kattankulathur – 603203</strong></div></div></div>
+        <div class="ci-row"><div class="ci-ic">🕐</div><div><div class="ci-lb">Clinic Hours</div><div class="ci-vl">Mon–Sat: <strong>9 AM–1 PM</strong> & <strong>5–9 PM</strong><br>Sunday: Closed</div></div></div>
+        <div class="ci-row"><div class="ci-ic">💬</div><div><div class="ci-lb">WhatsApp / Phone</div><div class="ci-vl"><strong>+91 98765 43210</strong><br>Quick response on WhatsApp</div></div></div>
+        <div class="tsq">
+          <div class="tsq-t">உடலை காப்பதே மனிதனின் கடமை</div>
+          <div class="tsq-e">"Protecting the body is the duty of every human being"</div>
+          <div class="tsq-s">— Tamil Wisdom</div>
+        </div>
+      </div>
+
+      <div class="f-card rvr">
+        <div class="f-ttl">📋 Appointment Request</div>
+        <div class="f-sub">Your message goes directly to our WhatsApp — fast & easy!</div>
+        <div class="f-row">
+          <div class="fg"><label class="flb">Full Name *</label><input type="text" id="fn" class="fi" placeholder="Your name"></div>
+          <div class="fg"><label class="flb">Phone Number *</label><input type="tel" id="fp" class="fi" placeholder="+91 XXXXX XXXXX"></div>
+        </div>
+        <div class="f-row">
+          <div class="fg"><label class="flb">Age</label><input type="number" id="fa" class="fi" placeholder="e.g. 32" min="0" max="120"></div>
+          <div class="fg"><label class="flb">Patient Type *</label>
+            <select id="ft" class="fs">
+              <option value="">Select...</option>
+              <option value="Child (0–15 yrs)">👶 Child (0–15 yrs)</option>
+              <option value="Adult Male">👨 Adult (Male)</option>
+              <option value="Adult Female">👩 Adult (Female)</option>
+              <option value="Senior Citizen">🧓 Senior Citizen</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label class="flb">Preferred Visit Time</label>
+          <select id="ftm" class="fs">
+            <option value="">Select slot...</option>
+            <option value="Morning (9AM–1PM)">🌅 Morning (9AM – 1PM)</option>
+            <option value="Evening (5PM–9PM)">🌆 Evening (5PM – 9PM)</option>
+            <option value="Any available time">Any available time</option>
           </select>
         </div>
-        <div class="form-group">
-          <label><i class="fas fa-calendar-alt"></i> Preferred Date / Message</label>
-          <textarea rows="2" placeholder="Your preferred date or any specific concern..." id="messageText"></textarea>
+        <div class="fg"><label class="flb">Symptoms / Reason for Visit</label>
+          <textarea id="fs2" class="fta" placeholder="Describe your symptoms or reason (e.g. fever, diabetes follow-up, child vaccination, women's health check...)"></textarea>
         </div>
-        <button type="submit" class="btn">Secure Appointment <i class="fas fa-calendar-check"></i></button>
-        <p style="font-size:0.7rem; margin-top: 16px; text-align:center;">🔒 HIPAA & GDPR compliant. Priority response within 2 hours.</p>
-      </form>
+        <div class="fg"><label class="flb">Preferred Language</label>
+          <select id="fl" class="fs">
+            <option value="Tamil">தமிழ் (Tamil)</option>
+            <option value="English">English</option>
+            <option value="Tamil & English">Tamil & English</option>
+          </select>
+        </div>
+        <button class="f-submit" onclick="sendWA()">💬 Send to WhatsApp & Confirm Appointment</button>
+        <p class="f-note">Clicking will open WhatsApp with your details pre-filled. We'll confirm your slot quickly.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
+<section class="cta-s">
+  <p class="cta-ta">உங்கள் உடல் நலம் எங்கள் கடமை</p>
+  <h2 class="cta-ttl">Your Health, Our Responsibility</h2>
+  <p class="cta-sub">Don't delay your health. Visit DR. Sathish Clinic — walk-ins welcome, Mon–Sat, morning & evening.</p>
+  <div class="cta-bts">
+    <a href="#contact" class="btn-wh">📋 Book Appointment</a>
+    <a href="https://maps.app.goo.gl/BKXL3kX8WtPLRNDg6" target="_blank" class="btn-ow">📍 Get Directions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="social-links" style="margin-bottom: 20px;">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
+  <div class="sec-in">
+    <div class="ft-g">
+      <div class="ft-ab">
+        <div class="fl">⚕️ Dr. Sathish Clinic</div>
+        <p>Expert general medicine for children, adults and women in Potheri, Kattankulathur. Compassionate, affordable and trusted care by Dr. Sathish — MBBS, AFIH, MBA.</p>
+        <p class="ft">நோயற்ற வாழ்வே குறைவற்ற செல்வம் 🌿</p>
+      </div>
+      <div class="ft-cl">
+        <h4>Quick Links</h4>
+        <a href="#services">Our Services</a>
+        <a href="#about">About Doctor</a>
+        <a href="#hours">Clinic Hours</a>
+        <a href="#contact">Book Appointment</a>
+      </div>
+      <div class="ft-cl">
+        <h4>Contact</h4>
+        <a href="tel:+919876543210">📞 +91 98765 43210</a>
+        <a href="https://wa.me/919876543210" target="_blank">💬 WhatsApp Us</a>
+        <a href="https://maps.app.goo.gl/BKXL3kX8WtPLRNDg6" target="_blank">📍 Google Maps</a>
+        <a>21A, Thiruvalluvar St, Potheri</a>
+      </div>
     </div>
-    <p>© 2025 Dr. Satish Clinic — Where Science Meets Elegance. All rights reserved.</p>
-    <p style="font-size:0.8rem; margin-top: 8px;">📍 Kattankulathur, Chengalpattu | Open daily 6:30 AM – 9:00 PM</p>
+    <div class="ft-bt">
+      <div class="ft-cp">© 2025 DR. Sathish Clinic · Potheri, Kattankulathur, TN 603203 · MBBS, AFIH, MBA</div>
+      <a href="https://wa.me/919876543210" class="ft-wa" target="_blank">💬 Chat on WhatsApp</a>
+    </div>
   </div>
 </footer>
-<a href="https://wa.me/919944455127" class="floating-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({ duration: 800, once: true, offset: 80 });
-  
-  // Mobile menu toggle
-  const mobileBtn = document.getElementById('mobileMenuBtn');
-  const navLinksDiv = document.getElementById('navLinks');
-  mobileBtn.addEventListener('click', () => navLinksDiv.classList.toggle('active'));
-  document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinksDiv.classList.remove('active')));
+// Custom cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function ac(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.13;ry+=(my-ry)*.13;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(ac)})();
+document.querySelectorAll('a,button,input,select,textarea').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';curR.style.width='48px';curR.style.height='48px'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='13px';cur.style.height='13px';curR.style.width='34px';curR.style.height='34px'});
+});
 
-  // Sticky navbar
-  window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if(window.scrollY > 30) navbar.style.background = 'rgba(253, 252, 248, 0.98)';
-    else navbar.style.background = 'rgba(253, 252, 248, 0.92)';
-  });
+// Particles
+const pc=document.getElementById('ptcls');
+for(let i=0;i<16;i++){const p=document.createElement('div');p.className='ptcl';const s=Math.random()*4+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*10}s;opacity:${Math.random()*.35+.1}`;pc.appendChild(p)}
 
-  // Enhanced form handler
-  const contactForm = document.getElementById('advancedForm');
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('fullname').value.trim();
-    if(name) {
-      alert(`✨ Dear ${name}, your exclusive consultation request is received. Our premium care team will reach out within 2 hours. ✨`);
-      contactForm.reset();
-    } else {
-      alert('Please provide your name to schedule a VIP appointment.');
-    }
-  });
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*70);obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>obs.observe(el));
 
-  // Smooth anchor scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if(targetId === "#" || targetId === "") return;
-      const target = document.querySelector(targetId);
-      if(target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if(navLinksDiv.classList.contains('active')) navLinksDiv.classList.remove('active');
-      }
-    });
-  });
+// Today highlight
+const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const today=days[new Date().getDay()];
+document.querySelectorAll('.hrs-row').forEach(r=>{
+  if(r.dataset.day===today){r.classList.add('today');const d=document.createElement('span');d.className='tdot';r.querySelector('.hrs-d').prepend(d)}
+});
+
+// Nav shrink
+const nb=document.getElementById('nb');
+window.addEventListener('scroll',()=>{nb.style.padding=window.scrollY>60?'.6rem 5vw':'1rem 5vw'});
+
+// Mobile nav
+function openNav(){document.getElementById('mobNav').classList.add('open');document.getElementById('ovl').classList.add('show')}
+function closeNav(){document.getElementById('mobNav').classList.remove('open');document.getElementById('ovl').classList.remove('show')}
+
+// WhatsApp form
+function sendWA(){
+  const name=document.getElementById('fn').value.trim();
+  const phone=document.getElementById('fp').value.trim();
+  const age=document.getElementById('fa').value.trim();
+  const type=document.getElementById('ft').value;
+  const time=document.getElementById('ftm').value;
+  const symp=document.getElementById('fs2').value.trim();
+  const lang=document.getElementById('fl').value;
+  if(!name){alert('Please enter your name.');return}
+  if(!phone){alert('Please enter your phone number.');return}
+  if(!type){alert('Please select patient type.');return}
+  const msg=`🏥 *DR. Sathish Clinic – Appointment Request*\n\n👤 *Patient Name:* ${name}\n📞 *Phone:* ${phone}${age?`\n🔢 *Age:* ${age} years`:''}\n👥 *Patient Type:* ${type}\n⏰ *Preferred Time:* ${time||'Not specified'}\n🗣️ *Language:* ${lang}\n🩺 *Symptoms / Reason:*\n${symp||'Not mentioned'}\n\n📍 *Clinic:* DR. Sathish Clinic\n21A, Thiruvalluvar St, Potheri,\nKattankulathur – 603203\n\n_Sent via clinic website_`;
+  window.open(`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
 </script>
 </body>
 </html>
