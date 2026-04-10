@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
   <title>Dr. Sathish Clinic | Family Medicine & Primary Care</title>
   <!-- Google Fonts + Font Awesome 6 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
       color: #1A2C2E;
       scroll-behavior: smooth;
       overflow-x: hidden;
+      width: 100%;
     }
 
     :root {
@@ -34,79 +35,85 @@
       --text-dark: #1A2C2E;
       --text-soft: #4A5B5E;
       --border-soft: #E9E2D4;
-      --shadow-premium: 0 30px 50px -20px rgba(0, 0, 0, 0.12), 0 10px 20px -8px rgba(0, 0, 0, 0.05);
-      --shadow-hover: 0 40px 60px -25px rgba(10, 47, 50, 0.2);
-      --transition-smooth: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1.05);
+      --shadow-premium: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 30px 45px -18px rgba(10, 47, 50, 0.15);
+      --transition-smooth: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1.05);
     }
 
     .container {
+      width: 100%;
       max-width: 1320px;
       margin: 0 auto;
-      padding: 0 36px;
-      width: 100%;
+      padding: 0 5%;
     }
 
     section {
-      padding: 90px 0;
+      padding: clamp(3rem, 8vw, 5.5rem) 0;
       position: relative;
     }
 
     h1, h2, h3 {
       font-weight: 700;
       letter-spacing: -0.02em;
+      line-height: 1.2;
     }
 
     h2 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 1rem;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin-bottom: 0.8rem;
       color: var(--primary-deep);
     }
 
     .section-subhead {
-      font-size: 1.2rem;
+      font-size: clamp(0.95rem, 3vw, 1.2rem);
       color: var(--text-soft);
       max-width: 700px;
-      margin-bottom: 3rem;
-      border-left: 5px solid var(--accent-gold);
-      padding-left: 1.6rem;
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--accent-gold);
+      padding-left: 1.2rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 10px;
       background: var(--primary-deep);
       color: white;
-      padding: 14px 34px;
+      padding: 12px 28px;
       border-radius: 60px;
       font-weight: 600;
       text-decoration: none;
       transition: var(--transition-smooth);
       border: none;
       cursor: pointer;
-      font-size: 1rem;
-      box-shadow: 0 8px 18px rgba(10, 47, 50, 0.2);
+      font-size: 0.95rem;
+      box-shadow: 0 6px 14px rgba(10, 47, 50, 0.15);
+      white-space: nowrap;
     }
 
-    .btn i {
-      transition: transform 0.2s;
+    @media (max-width: 550px) {
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        white-space: normal;
+      }
     }
 
     .btn:hover {
       background: var(--primary-slate);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 28px -10px rgba(10, 47, 50, 0.4);
+      transform: translateY(-3px);
     }
 
-    /* Navbar */
+    /* Navbar - fully responsive */
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
       background: rgba(253, 252, 248, 0.96);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(12px);
       z-index: 1000;
-      transition: 0.3s;
+      transition: 0.2s;
       border-bottom: 1px solid rgba(203, 162, 88, 0.2);
     }
 
@@ -114,139 +121,125 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 36px;
+      padding: 12px 5%;
       max-width: 1400px;
       margin: 0 auto;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .logo-img {
-      height: 70px;
+      height: clamp(50px, 8vw, 70px);
       width: auto;
-      max-width: 200px;
+      max-width: 180px;
       object-fit: contain;
-      border-radius: 16px;
+      border-radius: 14px;
       background: #0A2F32;
-      padding: 8px 16px;
+      padding: 6px 12px;
     }
 
     .logo-text h3 {
-      font-size: 1.7rem;
+      font-size: clamp(1.2rem, 5vw, 1.7rem);
       font-weight: 800;
       background: linear-gradient(135deg, #0A2F32 0%, #1C4B4F 100%);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      line-height: 1.2;
     }
 
     .logo-text span {
-      font-size: 0.75rem;
-      letter-spacing: 1px;
+      font-size: 0.65rem;
+      letter-spacing: 0.5px;
       color: var(--accent-gold);
-      font-weight: 500;
     }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 1.8rem;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--text-dark);
       font-weight: 500;
+      font-size: 0.95rem;
       transition: 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-gold);
     }
 
     .mobile-menu {
       display: none;
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       cursor: pointer;
       color: var(--primary-deep);
     }
 
     /* Hero */
     .hero {
-      padding-top: 150px;
-      padding-bottom: 70px;
+      padding-top: clamp(110px, 15vw, 150px);
+      padding-bottom: clamp(2.5rem, 6vw, 4rem);
       background: radial-gradient(ellipse at 80% 30%, #FFF8EF, #FDFAF2);
-      position: relative;
     }
 
     .hero-grid {
       display: flex;
       align-items: center;
-      gap: 3rem;
+      gap: clamp(1.5rem, 5vw, 3rem);
       flex-wrap: wrap;
     }
 
     .hero-content {
       flex: 1.2;
-      min-width: 280px;
+      min-width: 260px;
     }
 
     .tamil-quote {
       background: var(--accent-gold-light);
-      padding: 12px 24px;
-      border-radius: 80px;
-      font-size: 1rem;
+      padding: 8px 18px;
+      border-radius: 60px;
+      font-size: clamp(0.8rem, 3vw, 1rem);
       font-weight: 500;
       color: #7A5A2E;
-      margin-bottom: 20px;
+      margin-bottom: 1.2rem;
       display: inline-block;
-      font-style: italic;
     }
 
     .hero-content h1 {
-      font-size: clamp(2rem, 5vw, 3.6rem);
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: var(--primary-deep);
-    }
-
-    .highlight {
-      color: var(--accent-gold);
-      border-bottom: 3px dotted var(--accent-gold);
+      font-size: clamp(1.8rem, 6vw, 3.3rem);
+      margin-bottom: 1rem;
     }
 
     .stats-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
-      margin: 25px 0;
+      gap: 1rem;
+      margin: 1.5rem 0;
     }
 
     .stat-badge {
       background: white;
-      padding: 12px 20px;
-      border-radius: 60px;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+      padding: 8px 16px;
+      border-radius: 50px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
     }
 
     .stat-badge i {
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: var(--accent-gold);
     }
 
     .stat-badge strong {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: var(--primary-deep);
     }
 
@@ -254,57 +247,35 @@
     .doctor-card {
       flex: 0.9;
       background: white;
-      border-radius: 48px;
-      padding: 1.8rem;
+      border-radius: 40px;
+      padding: 1.5rem;
       text-align: center;
       box-shadow: var(--shadow-premium);
-      transition: var(--transition-smooth);
-      border: 1px solid rgba(203, 162, 88, 0.4);
     }
 
     .doctor-img-placeholder {
-      width: 260px;
-      height: 260px;
-      background: linear-gradient(145deg, #E8E0D0, #D6CDBB);
+      width: min(220px, 50vw);
+      height: min(220px, 50vw);
+      background: #E8E0D0;
       border-radius: 50%;
-      margin: 0 auto 20px;
+      margin: 0 auto 1rem;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
     }
 
     .doctor-img-placeholder img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
     }
 
     .doctor-card h3 {
-      font-size: 1.8rem;
-      margin-top: 12px;
+      font-size: clamp(1.3rem, 4vw, 1.7rem);
     }
 
-    /* Features Grid (Why Choose Us + Common Conditions) */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    .feature-card {
-      background: white;
-      border-radius: 32px;
-      padding: 2rem;
-      box-shadow: var(--shadow-premium);
-      transition: transform 0.3s;
-      border: 1px solid var(--border-soft);
-    }
-    .feature-card:hover {
-      transform: translateY(-8px);
-    }
+    /* Conditions Tags */
     .conditions-list {
       display: flex;
       flex-wrap: wrap;
@@ -316,159 +287,163 @@
       padding: 8px 18px;
       border-radius: 40px;
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
-    /* Clinic Hours Table with Blinking */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-premium);
+    }
+    /* Hours Table */
     .clinic-hours-card {
       background: white;
-      border-radius: 36px;
-      padding: 2rem;
+      border-radius: 32px;
+      padding: 1.5rem;
       box-shadow: var(--shadow-premium);
-      margin-top: 2rem;
     }
     .hours-table {
       width: 100%;
       border-collapse: collapse;
     }
     .hours-table td {
-      padding: 14px 8px;
+      padding: 12px 6px;
       border-bottom: 1px solid var(--border-soft);
-      font-weight: 500;
     }
     .blink-day {
       background-color: #FFF0D4;
       border-radius: 40px;
-      font-weight: 800;
-      color: var(--primary-deep);
-      animation: subtlePulse 1.2s infinite;
-      padding: 5px 12px;
+      padding: 4px 12px;
       display: inline-block;
+      font-weight: 700;
+      animation: subtlePulse 1.2s infinite;
     }
     @keyframes subtlePulse {
-      0% { background-color: #FFF0D4; box-shadow: 0 0 0 0 rgba(203,162,88,0.4);}
-      70% { background-color: #FFE2A4; box-shadow: 0 0 0 6px rgba(203,162,88,0);}
-      100% { background-color: #FFF0D4; box-shadow: 0 0 0 0 rgba(203,162,88,0);}
+      0% { background-color: #FFF0D4; }
+      70% { background-color: #FFE2A4; }
+      100% { background-color: #FFF0D4; }
     }
     .current-day-badge {
       background: var(--accent-gold);
       color: white;
-      padding: 5px 12px;
+      padding: 4px 12px;
       border-radius: 40px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: bold;
     }
-    /* Back to Top Button */
+    /* Contact form */
+    .contact-wrap {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .contact-info, .contact-form {
+      flex: 1;
+      min-width: 260px;
+    }
+    .contact-form {
+      background: white;
+      border-radius: 40px;
+      padding: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 18px;
+      border: 1.5px solid #E9E2D4;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .form-group textarea {
+      border-radius: 24px;
+    }
+    .map-preview {
+      border-radius: 28px;
+      height: 200px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .map-preview iframe {
+      width: 100%;
+      height: 100%;
+    }
     .back-to-top {
       position: fixed;
-      bottom: 100px;
-      right: 28px;
+      bottom: 90px;
+      right: 20px;
       background: var(--primary-deep);
       color: white;
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transition: 0.3s;
+      transition: 0.2s;
       z-index: 99;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
     }
     .back-to-top.show {
       opacity: 1;
       visibility: visible;
     }
-    .back-to-top:hover {
-      background: var(--primary-slate);
-      transform: translateY(-4px);
-    }
     .floating-whatsapp {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
+      bottom: 20px;
+      right: 20px;
       background: #25D366;
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      font-size: 1.8rem;
       z-index: 99;
       color: white;
-    }
-    .contact-form {
-      background: white;
-      border-radius: 48px;
-      padding: 2rem;
-      box-shadow: var(--shadow-premium);
-    }
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 14px 22px;
-      border: 1.5px solid #E9E2D4;
-      border-radius: 60px;
-      font-family: 'Inter', sans-serif;
-    }
-    .form-group textarea {
-      border-radius: 32px;
-    }
-    .contact-wrap {
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .contact-info {
-      flex: 1;
-    }
-    .map-preview {
-      background: #E2D9CE;
-      border-radius: 32px;
-      height: 220px;
-      margin-top: 20px;
-      overflow: hidden;
-    }
-    .map-preview iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
     }
     footer {
       background: #082426;
       color: #C6D6D8;
-      padding: 40px 0;
+      padding: 2rem 0;
       text-align: center;
+      font-size: 0.85rem;
     }
-    .social-links a {
-      color: #C6D6D8;
-      margin: 0 12px;
-      font-size: 1.4rem;
-    }
-    @media (max-width: 950px) {
+    @media (max-width: 820px) {
       .nav-links {
         position: fixed;
-        top: 85px;
+        top: 75px;
         left: -100%;
         flex-direction: column;
         background: white;
-        width: 75%;
+        width: 70%;
         height: 100vh;
         padding: 2rem;
         transition: 0.3s;
-        gap: 1.8rem;
+        gap: 1.5rem;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.05);
       }
       .nav-links.active { left: 0; }
       .mobile-menu { display: block; }
-      .container { padding: 0 20px; }
-      .doctor-img-placeholder { width: 200px; height: 200px; }
+      .stats-row { justify-content: center; }
+    }
+    @media (max-width: 550px) {
+      .hero-grid { flex-direction: column; text-align: center; }
+      .hero-content { text-align: center; }
+      .section-subhead { text-align: left; }
+      .conditions-list { justify-content: center; }
+      .stat-badge { flex: 1 0 auto; justify-content: center; }
     }
   </style>
 </head>
@@ -494,34 +469,34 @@
   </div>
 </div>
 
-<!-- Hero Section -->
+<!-- Hero -->
 <section id="home" class="hero">
   <div class="container hero-grid">
     <div class="hero-content" data-aos="fade-up">
       <div class="tamil-quote"><i class="fas fa-quote-left"></i> உடல் நலமே மெய்ப்பொருள் | மருத்துவம் காப்பது மனிதநேயம்</div>
-      <h1>Holistic Healing for <span class="highlight">Every Age</span> – Kids, Adults & Seniors</h1>
-      <p>Compassionate, evidence-based primary care. Specialized in family medicine, preventive health, and personalized treatments.</p>
+      <h1>Holistic Healing for <span class="highlight" style="color:#CBA258;">Every Age</span> – Kids, Adults & Seniors</h1>
+      <p>Compassionate, evidence-based primary care. Specialized in family medicine, preventive health.</p>
       <div class="stats-row">
-        <div class="stat-badge"><i class="fas fa-chart-line"></i> <div><strong>99% Success Rate</strong><br>Patient Satisfaction</div></div>
+        <div class="stat-badge"><i class="fas fa-chart-line"></i> <div><strong>99% Success Rate</strong><br>Satisfaction</div></div>
         <div class="stat-badge"><i class="fas fa-smile"></i> <div><strong>12k+</strong><br>Happy Families</div></div>
       </div>
-      <a href="#contact" class="btn" style="margin-top: 15px;">Book Consultation <i class="fab fa-whatsapp"></i></a>
+      <a href="#contact" class="btn">Book Consultation <i class="fab fa-whatsapp"></i></a>
     </div>
     <div class="doctor-card" data-aos="fade-left">
       <div class="doctor-img-placeholder">
         <img src="DR.jpeg" alt="Dr. Sathish">
       </div>
       <h3>Dr. Sathish Kumar</h3>
-      <div class="doctor-title" style="color:var(--accent-gold);">MBBS, AFIH, MBA | General Physician</div>
+      <div style="color:var(--accent-gold); font-weight:600;">MBBS, AFIH, MBA | General Physician</div>
       <p><i class="fas fa-child"></i> Kids | <i class="fas fa-female"></i> Women | <i class="fas fa-male"></i> Adults</p>
     </div>
   </div>
 </section>
 
-<!-- Quick Reference: Common Conditions We Treat -->
-<section id="conditions" style="padding: 60px 0; background:#FFFFFF;">
+<!-- Quick Reference: Common Conditions -->
+<section id="conditions" style="padding: 2rem 0 3rem 0;">
   <div class="container">
-    <h2 data-aos="fade-right">📋 Quick Reference: <span style="color:#CBA258;">Common Conditions We Treat</span></h2>
+    <h2 data-aos="fade-right">📋 Quick Reference: <span style="color:#CBA258;">Common Conditions</span></h2>
     <div class="conditions-list" data-aos="fade-up">
       <span class="condition-tag">🤒 Fever & Infections</span>
       <span class="condition-tag">🩺 Diabetes Management</span>
@@ -532,33 +507,31 @@
       <span class="condition-tag">🧠 Thyroid Disorders</span>
       <span class="condition-tag">🦴 Joint Pains</span>
       <span class="condition-tag">😴 Sleep Disorders</span>
-      <span class="condition-tag">🧘 Stress & Anxiety</span>
       <span class="condition-tag">🍎 Nutritional Deficiencies</span>
-      <span class="condition-tag">🏥 Occupational Health</span>
     </div>
   </div>
 </section>
 
-<!-- Why Choose Us + Extra Features -->
-<section id="whyus" style="background:#FEFAF5; padding: 70px 0;">
+<!-- Why Choose Us -->
+<section id="whyus" style="background:#FEFAF5;">
   <div class="container">
     <h2 data-aos="fade-right">✨ Why Choose <span style="color:#CBA258;">Dr. Sathish Clinic?</span></h2>
     <div class="features-grid">
-      <div class="feature-card" data-aos="zoom-in"><i class="fas fa-user-md" style="font-size: 2.5rem; color:var(--accent-gold);"></i><h3 style="margin:15px 0">Expert General Physician</h3><p>15+ years of hands-on experience, MBBS, AFIH, MBA in Healthcare — holistic & evidence-based approach.</p></div>
-      <div class="feature-card" data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-clock" style="font-size: 2.5rem; color:var(--accent-gold);"></i><h3 style="margin:15px 0">Extended Hours</h3><p>Open 6:30 AM – 9:00 PM including Sundays, making quality healthcare accessible for all.</p></div>
-      <div class="feature-card" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-hand-holding-heart" style="font-size: 2.5rem; color:var(--accent-gold);"></i><h3 style="margin:15px 0">Compassionate Care</h3><p>Personalized treatment plans, Tamil & English fluent, respecting cultural values.</p></div>
-      <div class="feature-card" data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-laptop-medical" style="font-size: 2.5rem; color:var(--accent-gold);"></i><h3 style="margin:15px 0">Teleconsultation</h3><p>Virtual follow-ups & emergency guidance via WhatsApp/Video call for convenience.</p></div>
+      <div class="feature-card" data-aos="zoom-in"><i class="fas fa-user-md" style="font-size:2rem; color:var(--accent-gold);"></i><h3 style="margin:12px 0">Expert General Physician</h3><p>MBBS, AFIH, MBA — 15+ years of clinical excellence.</p></div>
+      <div class="feature-card" data-aos="zoom-in"><i class="fas fa-clock" style="font-size:2rem; color:var(--accent-gold);"></i><h3 style="margin:12px 0">Extended Hours</h3><p>Open 6:30 AM – 9:00 PM, including Sundays.</p></div>
+      <div class="feature-card" data-aos="zoom-in"><i class="fas fa-hand-holding-heart" style="font-size:2rem; color:var(--accent-gold);"></i><h3 style="margin:12px 0">Compassionate Care</h3><p>Tamil & English, personalized family-centric approach.</p></div>
+      <div class="feature-card" data-aos="zoom-in"><i class="fas fa-laptop-medical" style="font-size:2rem; color:var(--accent-gold);"></i><h3 style="margin:12px 0">Teleconsultation</h3><p>Video/WhatsApp follow-ups for convenience.</p></div>
     </div>
-    <div class="tamil-quote" style="margin-top: 20px; text-align:center; display:block;">“நோய் தீர்ப்பதை விட நோய் வராமல் தடுப்பதே சிறந்த மருத்துவம்” – Preventive care is our forte.</div>
+    <div class="tamil-quote" style="margin-top:2rem; text-align:center; display:block;">“நோய் தீர்ப்பதை விட நோய் வராமல் தடுப்பதே சிறந்த மருத்துவம்” – Preventive care is our forte.</div>
   </div>
 </section>
 
-<!-- Visit Us: Clinic Hours & Location with Blinking Today (Friday) -->
-<section id="visitus" style="padding: 70px 0; background:#FFFFFF;">
+<!-- Visit Us: Hours + Location with Blinking for Today (Friday detection) -->
+<section id="visitus" style="background: white;">
   <div class="container">
     <h2 data-aos="fade-right">📍 Visit Us — Clinic Hours & Location</h2>
     <div class="clinic-hours-card" data-aos="fade-up">
-      <h3><i class="far fa-calendar-alt"></i> Weekly Schedule <span id="todayBlinkBadge" class="current-day-badge" style="margin-left: 15px;"></span></h3>
+      <h3><i class="far fa-calendar-alt"></i> Weekly Schedule <span id="todayBlinkBadge" class="current-day-badge" style="margin-left: 12px;"></span></h3>
       <table class="hours-table">
         <tr><td><strong>Monday</strong></td><td>6:30 AM – 9:00 PM</td><td id="mon"></td></tr>
         <tr><td><strong>Tuesday</strong></td><td>6:30 AM – 9:00 PM</td><td id="tue"></td></tr>
@@ -571,29 +544,29 @@
       <div style="margin-top: 20px; padding: 12px; background: var(--accent-gold-light); border-radius: 28px;">
         <i class="fas fa-map-marker-alt"></i> <strong>21a, Thiruvalluvar St, Kattankulathur, Near V Care Pharmacy, Potheri, Chengalpattu-603203</strong>
       </div>
-      <div style="margin-top: 15px;"><i class="fas fa-phone-alt"></i> +91 99444 55127 | Emergency Available 24/7</div>
+      <div style="margin-top: 15px;"><i class="fas fa-phone-alt"></i> +91 99444 55127 | Emergency: 24/7 Available</div>
     </div>
   </div>
 </section>
 
 <!-- Contact + WhatsApp Form -->
-<section id="contact" style="background: #FDFAF2; padding: 70px 0;">
+<section id="contact" style="background: #FDFAF2;">
   <div class="container contact-wrap">
     <div class="contact-info" data-aos="fade-right">
       <h2>📞 Get in Touch</h2>
-      <p style="margin: 20px 0;">Book a priority consultation via WhatsApp or visit our clinic.</p>
+      <p style="margin: 15px 0;">Book a priority consultation via WhatsApp or visit our clinic.</p>
       <div class="map-preview">
-        <iframe src="https://maps.google.com/maps?q=21a%2C%20Thiruvalluvar%20St%2C%20Kattankulathur%2C%20Chengalpattu%2C%20Tamil%20Nadu%20603203&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://maps.google.com/maps?q=21a%2C%20Thiruvalluvar%20St%2C%20Kattankulathur%2C%20Chengalpattu%2C%20Tamil%20Nadu%20603203&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
       </div>
     </div>
     <div class="contact-form" data-aos="fade-left">
-      <h3>✨ Request Appointment (WhatsApp Redirect)</h3>
+      <h3>✨ Request Appointment (WhatsApp)</h3>
       <form id="whatsappForm">
-        <div class="form-group"><label><i class="fas fa-user"></i> Full Name</label><input type="text" id="fullName" placeholder="Your Name" required></div>
-        <div class="form-group"><label><i class="fas fa-phone-alt"></i> WhatsApp Number</label><input type="tel" id="phoneNum" placeholder="+91 XXXXXXXXXX" required></div>
-        <div class="form-group"><label><i class="fas fa-calendar-day"></i> Concern / Message</label><textarea rows="2" id="userMsg" placeholder="Age, symptoms or preferred time"></textarea></div>
-        <div class="form-group"><label><i class="fas fa-users"></i> Patient Category</label><select id="patientType"><option>Child (0-12 yrs)</option><option>Teen (13-19)</option><option>Adult Female</option><option>Adult Male</option><option>Senior Citizen</option></select></div>
-        <button type="submit" class="btn"><i class="fab fa-whatsapp"></i> Send & Redirect to WhatsApp</button>
+        <div class="form-group"><label>Full Name</label><input type="text" id="fullName" placeholder="Your Name" required></div>
+        <div class="form-group"><label>WhatsApp Number</label><input type="tel" id="phoneNum" placeholder="+91 XXXXXXXXXX" required></div>
+        <div class="form-group"><label>Concern / Message</label><textarea rows="2" id="userMsg" placeholder="Age, symptoms or preferred time"></textarea></div>
+        <div class="form-group"><label>Patient Category</label><select id="patientType"><option>Child (0-12 yrs)</option><option>Teen (13-19)</option><option>Adult Female</option><option>Adult Male</option><option>Senior Citizen</option></select></div>
+        <button type="submit" class="btn"><i class="fab fa-whatsapp"></i> Send & Redirect</button>
       </form>
     </div>
   </div>
@@ -601,7 +574,11 @@
 
 <footer>
   <div class="container">
-    <div class="social-links"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+    <div class="social-links" style="margin-bottom: 12px;">
+      <a href="#" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" style="color:#C6D6D8; margin:0 10px;"><i class="fab fa-facebook-f"></i></a>
+    </div>
     <p>© 2025 Dr. Sathish Clinic — உங்கள் ஆரோக்கியம், எங்கள் முன்னுரிமை | Your Health, Our Priority</p>
     <p>📍 Kattankulathur, Chengalpattu | Open Daily 6:30 AM – 9:00 PM</p>
   </div>
@@ -612,31 +589,28 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({ duration: 800, once: true });
-  // Mobile menu
-  const mobileBtn = document.getElementById('mobileMenuBtn');
-  const navLinksDiv = document.getElementById('navLinks');
-  mobileBtn.addEventListener('click', () => navLinksDiv.classList.toggle('active'));
-  document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinksDiv.classList.remove('active')));
+  AOS.init({ duration: 700, once: true, offset: 60 });
 
-  // Dynamic Blinking for Today (Friday detection)
-  const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  const today = new Date().getDay(); // 0 = Sunday, 5 = Friday
-  const todayName = days[today];
-  const dayElements = {
-    monday: 'mon', tuesday: 'tue', wednesday: 'wed', thursday: 'thu', friday: 'fri', saturday: 'sat', sunday: 'sun'
-  };
-  const todayId = dayElements[todayName];
-  if(todayId) {
-    const tdElem = document.getElementById(todayId);
-    if(tdElem) {
-      tdElem.innerHTML = '<span class="blink-day"><i class="fas fa-bell"></i> Open Today</span>';
-    }
+  // Mobile toggle
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  mobileBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+  // Blinking for today (Friday detection)
+  const daysMap = { monday:'mon', tuesday:'tue', wednesday:'wed', thursday:'thu', friday:'fri', saturday:'sat', sunday:'sun' };
+  const today = new Date().getDay(); // 0 Sun .. 5 Fri
+  const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  const todayName = dayNames[today];
+  const targetId = daysMap[todayName];
+  if(targetId) {
+    const cell = document.getElementById(targetId);
+    if(cell) cell.innerHTML = '<span class="blink-day"><i class="fas fa-bell"></i> Open Today (Blinking)</span>';
   }
   const badgeSpan = document.getElementById('todayBlinkBadge');
-  if(badgeSpan) badgeSpan.innerHTML = `Today: ${todayName.toUpperCase()} 🔴 OPEN`;
+  if(badgeSpan) badgeSpan.innerText = `Today: ${todayName.toUpperCase()} 🔴 OPEN`;
 
-  // WhatsApp Form Submit -> redirect with prefilled data
+  // WhatsApp redirect
   const form = document.getElementById('whatsappForm');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -650,10 +624,10 @@
     form.reset();
   });
 
-  // Back to Top Button logic
+  // Back to Top
   const backBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
-    if(window.scrollY > 400) backBtn.classList.add('show');
+    if(window.scrollY > 300) backBtn.classList.add('show');
     else backBtn.classList.remove('show');
     const navbar = document.getElementById('navbar');
     navbar.style.background = window.scrollY > 30 ? 'rgba(253, 252, 248, 0.98)' : 'rgba(253, 252, 248, 0.96)';
