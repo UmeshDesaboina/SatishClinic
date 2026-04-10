@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- AOS Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Flatpickr for modern date picker (lightweight) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <style>
     * {
       margin: 0;
@@ -336,7 +339,7 @@
       font-size: 0.75rem;
       font-weight: bold;
     }
-    /* Contact form */
+    /* Contact form enhancements */
     .contact-wrap {
       display: flex;
       gap: 2rem;
@@ -349,10 +352,18 @@
     .contact-form {
       background: white;
       border-radius: 40px;
-      padding: 1.5rem;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-premium);
     }
     .form-group {
       margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--primary-deep);
+      font-size: 0.9rem;
     }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
@@ -361,9 +372,16 @@
       border-radius: 50px;
       font-family: inherit;
       font-size: 0.9rem;
+      transition: 0.2s;
     }
     .form-group textarea {
       border-radius: 24px;
+      resize: vertical;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px rgba(203,162,88,0.2);
     }
     .map-preview {
       border-radius: 28px;
@@ -444,6 +462,11 @@
       .section-subhead { text-align: left; }
       .conditions-list { justify-content: center; }
       .stat-badge { flex: 1 0 auto; justify-content: center; }
+    }
+    /* flatpickr custom */
+    .flatpickr-calendar {
+      border-radius: 20px;
+      box-shadow: var(--shadow-premium);
     }
   </style>
 </head>
@@ -526,7 +549,7 @@
   </div>
 </section>
 
-<!-- Visit Us: Hours + Location with Blinking for Today (Friday detection) -->
+<!-- Visit Us: Hours + Location with Blinking for Today -->
 <section id="visitus" style="background: white;">
   <div class="container">
     <h2 data-aos="fade-right">📍 Visit Us — Clinic Hours & Location</h2>
@@ -549,24 +572,53 @@
   </div>
 </section>
 
-<!-- Contact + WhatsApp Form -->
+<!-- Contact + WhatsApp Form with Enhanced Fields (Description + Appointment Date) -->
 <section id="contact" style="background: #FDFAF2;">
   <div class="container contact-wrap">
     <div class="contact-info" data-aos="fade-right">
       <h2>📞 Get in Touch</h2>
-      <p style="margin: 15px 0;">Book a priority consultation via WhatsApp or visit our clinic.</p>
+      <p style="margin: 15px 0;">Book a priority consultation via WhatsApp or visit our clinic. Fill the form with your preferred date and detailed reason.</p>
       <div class="map-preview">
         <iframe src="https://maps.google.com/maps?q=21a%2C%20Thiruvalluvar%20St%2C%20Kattankulathur%2C%20Chengalpattu%2C%20Tamil%20Nadu%20603203&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
       </div>
     </div>
     <div class="contact-form" data-aos="fade-left">
-      <h3>✨ Request Appointment (WhatsApp)</h3>
+      <h3>✨ Book Your Appointment (WhatsApp)</h3>
       <form id="whatsappForm">
-        <div class="form-group"><label>Full Name</label><input type="text" id="fullName" placeholder="Your Name" required></div>
-        <div class="form-group"><label>WhatsApp Number</label><input type="tel" id="phoneNum" placeholder="+91 XXXXXXXXXX" required></div>
-        <div class="form-group"><label>Concern / Message</label><textarea rows="2" id="userMsg" placeholder="Age, symptoms or preferred time"></textarea></div>
-        <div class="form-group"><label>Patient Category</label><select id="patientType"><option>Child (0-12 yrs)</option><option>Teen (13-19)</option><option>Adult Female</option><option>Adult Male</option><option>Senior Citizen</option></select></div>
-        <button type="submit" class="btn"><i class="fab fa-whatsapp"></i> Send & Redirect</button>
+        <div class="form-group">
+          <label><i class="fas fa-user"></i> Full Name *</label>
+          <input type="text" id="fullName" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fab fa-whatsapp"></i> WhatsApp Number *</label>
+          <input type="tel" id="phoneNum" placeholder="+91 XXXXXXXXXX" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-users"></i> Patient Category</label>
+          <select id="patientType">
+            <option>Child (0-12 yrs)</option>
+            <option>Teen (13-19)</option>
+            <option>Adult Female</option>
+            <option>Adult Male</option>
+            <option>Senior Citizen</option>
+          </select>
+        </div>
+        <!-- NEW: Appointment Date Picker -->
+        <div class="form-group">
+          <label><i class="fas fa-calendar-alt"></i> Preferred Appointment Date</label>
+          <input type="text" id="appointmentDate" placeholder="Select a date" readonly style="background-color: #fff; cursor: pointer;">
+        </div>
+        <!-- NEW: Detailed Description / Reason for Visit -->
+        <div class="form-group">
+          <label><i class="fas fa-notes-medical"></i> Detailed Reason / Symptoms (Optional but recommended)</label>
+          <textarea rows="3" id="detailedDesc" placeholder="Describe your concern, symptoms, duration, or any specific request..."></textarea>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-comment-dots"></i> Short Message / Time preference</label>
+          <textarea rows="2" id="userMsg" placeholder="Eg: Morning slot after 10 AM"></textarea>
+        </div>
+        <button type="submit" class="btn"><i class="fab fa-whatsapp"></i> Send & Redirect to WhatsApp</button>
+        <p style="font-size: 0.7rem; margin-top: 12px; text-align:center;">🔒 Your data is secure. You'll be redirected to WhatsApp with prefilled details.</p>
       </form>
     </div>
   </div>
@@ -599,7 +651,7 @@
 
   // Blinking for today (Friday detection)
   const daysMap = { monday:'mon', tuesday:'tue', wednesday:'wed', thursday:'thu', friday:'fri', saturday:'sat', sunday:'sun' };
-  const today = new Date().getDay(); // 0 Sun .. 5 Fri
+  const today = new Date().getDay();
   const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
   const todayName = dayNames[today];
   const targetId = daysMap[todayName];
@@ -610,18 +662,49 @@
   const badgeSpan = document.getElementById('todayBlinkBadge');
   if(badgeSpan) badgeSpan.innerText = `Today: ${todayName.toUpperCase()} 🔴 OPEN`;
 
-  // WhatsApp redirect
+  // Flatpickr initialization for appointment date
+  flatpickr("#appointmentDate", {
+    dateFormat: "d-m-Y",
+    minDate: "today",
+    disable: [
+      function(date) {
+        // Disable Sundays if needed? Keep all days open, but show only weekdays? we keep all open but optional
+        return false;
+      }
+    ],
+    locale: {
+      firstDayOfWeek: 1,
+      weekdays: { shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] }
+    },
+    placeholder: "Select preferred date"
+  });
+
+  // WhatsApp redirect with enhanced fields
   const form = document.getElementById('whatsappForm');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phoneNum').value.trim();
-    const msg = document.getElementById('userMsg').value.trim();
     const patientCat = document.getElementById('patientType').value;
+    const appointmentDate = document.getElementById('appointmentDate').value;
+    const detailedDesc = document.getElementById('detailedDesc').value.trim();
+    const shortMsg = document.getElementById('userMsg').value.trim();
+
     if(!name || !phone) { alert("Please enter name and phone number"); return; }
-    let finalMsg = `Hello Dr. Sathish Clinic, Appointment Request.%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Category:* ${encodeURIComponent(patientCat)}%0A*Message:* ${encodeURIComponent(msg || 'General consultation')}`;
+    
+    let finalMsg = `Hello Dr. Sathish Clinic, New Appointment Request.%0A%0A`;
+    finalMsg += `*Name:* ${encodeURIComponent(name)}%0A`;
+    finalMsg += `*Phone:* ${encodeURIComponent(phone)}%0A`;
+    finalMsg += `*Category:* ${encodeURIComponent(patientCat)}%0A`;
+    if(appointmentDate) finalMsg += `*Preferred Date:* ${encodeURIComponent(appointmentDate)}%0A`;
+    if(detailedDesc) finalMsg += `*Detailed Reason/Symptoms:* ${encodeURIComponent(detailedDesc)}%0A`;
+    if(shortMsg) finalMsg += `*Additional Message:* ${encodeURIComponent(shortMsg)}%0A`;
+    finalMsg += `%0AThank you, please confirm my appointment.`;
+    
     window.open(`https://wa.me/919944455127?text=${finalMsg}`, '_blank');
     form.reset();
+    // Clear flatpickr value manually
+    document.getElementById('appointmentDate').value = '';
   });
 
   // Back to Top
