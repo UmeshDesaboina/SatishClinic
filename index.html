@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- AOS Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Flatpickr for modern date picker (lightweight) -->
+  <!-- Flatpickr for modern date picker (lightweight, shows calendar) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <style>
@@ -463,10 +463,18 @@
       .conditions-list { justify-content: center; }
       .stat-badge { flex: 1 0 auto; justify-content: center; }
     }
-    /* flatpickr custom */
+    /* flatpickr custom styling */
     .flatpickr-calendar {
       border-radius: 20px;
       box-shadow: var(--shadow-premium);
+      font-family: 'Inter', sans-serif;
+    }
+    .flatpickr-day.selected, .flatpickr-day.selected:hover {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+    .flatpickr-day.today {
+      border-color: var(--primary-deep);
     }
   </style>
 </head>
@@ -572,7 +580,7 @@
   </div>
 </section>
 
-<!-- Contact + WhatsApp Form with Enhanced Fields (Description + Appointment Date) -->
+<!-- Contact + WhatsApp Form with Enhanced Fields (Date Picker + Description) -->
 <section id="contact" style="background: #FDFAF2;">
   <div class="container contact-wrap">
     <div class="contact-info" data-aos="fade-right">
@@ -603,18 +611,18 @@
             <option>Senior Citizen</option>
           </select>
         </div>
-        <!-- NEW: Appointment Date Picker -->
+        <!-- Date Picker - shows calendar on click -->
         <div class="form-group">
           <label><i class="fas fa-calendar-alt"></i> Preferred Appointment Date</label>
-          <input type="text" id="appointmentDate" placeholder="Select a date" readonly style="background-color: #fff; cursor: pointer;">
+          <input type="text" id="appointmentDate" placeholder="Click to select a date" readonly style="background-color: #fff; cursor: pointer;">
         </div>
-        <!-- NEW: Detailed Description / Reason for Visit -->
+        <!-- Detailed Description / Reason for Visit -->
         <div class="form-group">
-          <label><i class="fas fa-notes-medical"></i> Detailed Reason / Symptoms (Optional but recommended)</label>
+          <label><i class="fas fa-notes-medical"></i> Detailed Reason / Symptoms</label>
           <textarea rows="3" id="detailedDesc" placeholder="Describe your concern, symptoms, duration, or any specific request..."></textarea>
         </div>
         <div class="form-group">
-          <label><i class="fas fa-comment-dots"></i> Short Message / Time preference</label>
+          <label><i class="fas fa-comment-dots"></i> Additional Message / Time preference</label>
           <textarea rows="2" id="userMsg" placeholder="Eg: Morning slot after 10 AM"></textarea>
         </div>
         <button type="submit" class="btn"><i class="fab fa-whatsapp"></i> Send & Redirect to WhatsApp</button>
@@ -662,22 +670,26 @@
   const badgeSpan = document.getElementById('todayBlinkBadge');
   if(badgeSpan) badgeSpan.innerText = `Today: ${todayName.toUpperCase()} 🔴 OPEN`;
 
-  // Flatpickr initialization for appointment date
-  flatpickr("#appointmentDate", {
+  // Initialize Flatpickr Date Picker - shows calendar when clicked
+  const datePicker = flatpickr("#appointmentDate", {
     dateFormat: "d-m-Y",
     minDate: "today",
-    disable: [
-      function(date) {
-        // Disable Sundays if needed? Keep all days open, but show only weekdays? we keep all open but optional
-        return false;
-      }
-    ],
+    allowInput: false,
+    disableMobile: true,  // ensures native calendar doesn't override on mobile? flatpickr handles well
+    onChange: function(selectedDates, dateStr, instance) {
+      // Optional: you can add any logic when date is selected
+      console.log("Selected date: ", dateStr);
+    },
     locale: {
       firstDayOfWeek: 1,
-      weekdays: { shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] }
+      weekdays: { shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] },
+      monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     },
-    placeholder: "Select preferred date"
+    placeholder: "Select a date"
   });
+
+  // Ensure the calendar opens on click (readonly input already makes it open)
+  // Flatpickr automatically attaches to the input.
 
   // WhatsApp redirect with enhanced fields
   const form = document.getElementById('whatsappForm');
